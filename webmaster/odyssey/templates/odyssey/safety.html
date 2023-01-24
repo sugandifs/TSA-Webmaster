@@ -1,0 +1,64 @@
+{% extends "odyssey/layout.html" %}
+
+{% block body %}
+{% load static %}
+
+<h3>Safety</h3>
+
+<h2 class="heading">MEET THE NAUSICA</h2>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="card horizontal text-right">
+                <img src="{% static 'odyssey/assets/nausica3.jpg' %}" class="card-img-top horizontalImage" />
+                <div class="card-body">
+                    <h5 class="card-title">BUILT WITH YOU IN MIND</h5>
+                    <p class="card-text">
+                        You will feel right at
+                        home in our cockpit, courtesy of our minimalistic styling and expansive layout. The Nausica was
+                        designed with the latest technologies to ensure your safety and comfort in your odyssey to
+                        space.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card horizontal text-right">
+                <img src="{% static 'odyssey/assets/nausicaAstronauts.jpg' %}" class="card-img-top horizontalImage" />
+                <div class="card-body">
+                    <h5 class="card-title">BEYOND COMFORT</h5>
+                    <p class="card-text">
+                        The Nausica's seats were built with memory foam to ensure maximum comfort during space flight.
+                        We have employed world-class ergonomists to ensure the absolute best seating position.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card horizontal text-right">
+                <img src="{% static 'odyssey/assets/nausicaSeatbelts.jpg' %}" class="card-img-top horizontalImage" />
+                <div class="card-body">
+                    <h5 class="card-title">ENSURING SAFETY</h5>
+                    <p class="card-text">
+                        Our seatbelts are infused with state-of-the-art technology to guarantee your safety. More
+                        promotiona stuff about saefty sadhkjashdkahshdkah
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<h2>Internal safety featuers of the nausica</h2>
+<p>proper insulation, radiation protection, constant communication and navigation, ground-to-space tracking, enforced
+    metal outing to protect against collisions</p>
+
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends "odyssey/layout.html" %}
+
+{% block body %}
+{% load static %}
+
+<div class="parallaxVehicle">
+</div>
+
+<h2 class="heading">FIND YOUR ODYSSEY</h2>
+<h5 class="text">We know that space is an interesting realm to explore, so we have provided several options for you to
+    choose from!</h5>
+
+<br>
+
+<div class="card-group align">
+    <div class="card">
+        <img class="card-img-top" src="{% static 'odyssey/assets/253x180.png' %}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">ORBITAL TOUR</h5>
+            <p class="card-text">tour that orbits the earth, iss, moon and other planets maybe.</p>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'program' %}" class="card-link">View the itinerary</a>
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="{% static 'odyssey/assets/253x180.png' %}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">ISS TOUR</h5>
+            <p class="card-text">flies to iss and provided a tour inside the iss. will orbit the earth and moon before
+                landing.</p>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'program' %}" class="card-link">View the itinerary</a>
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="{% static 'odyssey/assets/253x180.png' %}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">MOON TOUR</h5>
+            <p class="card-text">flies and lands on the moon with a guided tour on where the first moon landing is. will
+                leave and orbit iss and earth before landing on earth.</p>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'program' %}" class="card-link">View the itinerary</a>
+        </div>
+    </div>
+</div>
+
+<h2 class="heading">STARTING YOUR ODYSSEY</h2>
+
+<div class="timelineContainer">
+    <div class="timeline">
+        <ul>
+            <li>
+                <div class="timeline-content">
+                    <h1>D-21 TO LAUNCH</h1>
+                    <p>In order to ensure that you are prepared for the rigor of spaceflight, we require you to take a
+                        standard physical exam at our headquarters. We will be looking for:</p>
+                    <p>1: 20/20 vision with or without correction lenses</p>
+                    <p>2: 140/90 or less blood pressure in a seating position</p>
+                    <p>3: a height between 62 and 75 inches</p>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-content">
+                    <h1>D-18 TO LAUNCH</h1>
+                    <p>Once you've gotten the greenlight, you will be fitted into your own space suit! As we wait for
+                        your spacesuit to be done, you will spend the next week slowly training with our modified jets.
+                        Spaceflight is tough, so we will be running a lot of simulations to get you space-ready.</p>
+                    <p> Take a peek at our training regime here.</p>
+                    <img src="{% static 'odyssey/assets/253x180.png' %}" alt="Card image cap">
+
+                </div>
+            </li>
+            <li>
+                <div class="timeline-content">
+                    <h1>D-10 TO LAUNCH</h1>
+                    <p>You've been training hard this past week and are almost ready for take-off. Now all that's left
+                        is for you to go through our emergency training. Don't worry, we promise that you won't have to
+                        use your knowledge in space, but it doesn't hurt to learn anyways, right?</p>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-content">
+                    <h1>D-3 TO LAUNCH</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempora ab laudantium
+                        voluptatibus aut eos placeat laborum, quibusdam exercitationem labore.</p>
+                </div>
+            </li>
+
+            <li>
+                <div class="timeline-content">
+                    <h1>LAUNCH DAY</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempora ab laudantium
+                        voluptatibus aut eos placeat laborum, quibusdam exercitationem labore.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<h2 class="heading">THE TRAINING REGIME</h2>
+
+<table class="table align">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+
+{% endblock %}

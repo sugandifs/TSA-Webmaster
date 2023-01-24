@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap');
+
+.align,
+.form-group {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1000%;
+    color: whitesmoke;
+}
+
+.heading {
+    font-family: 'Oswald', sans-serif;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.subheading {
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;
+}
+
+.marginTop {
+    margin-top: 30px;
+}
+
+.text {
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+nav {
+    font-family: 'Oswald', sans-serif;
+
+}
+
+.card-text {
+    font-family: 'Roboto', sans-serif;
+}
+
+.card-title {
+    font-family: 'Oswald', sans-serif;
+}
+
+
+@media only screen and (max-device-width: 1366px) {
+
+    .parallaxIndex,
+    .parallaxVehicle {
+        background-attachment: scroll;
+    }
+}
+
+.parallaxIndex {
+    /* The image used */
+    background-image: url("assets/homePage.jpg");
+    opacity: 0.80;
+
+    /* Set a specific height */
+    min-height: 800px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallaxVehicle {
+    background-image: url("assets/nausica.jpg");
+
+    min-height: 300px;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.center {
+    text-align: center;
+}
+
+.caption {
+    position: absolute;
+    left: 0;
+    top: 55%;
+    width: 100%;
+    text-align: center;
+}
+
+/* TESTIMONIAL CSS */
+.col-center {
+    margin: 0 auto;
+    float: none !important;
+}
+
+.carousel {
+    margin: 50px auto;
+    padding: 0 70px;
+}
+
+.carousel-item {
+    color: #999;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    min-height: 290px;
+}
+
+.carousel .item .img-box {
+    width: 135px;
+    height: 135px;
+    margin: 0 auto;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+}
+
+.carousel .img-box img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+}
+
+.carousel .testimonial {
+    padding: 30px 0 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+.carousel .overview {
+    font-style: italic;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+.carousel .overview b {
+    text-transform: uppercase;
+    color: #db584e;
+}
+
+.carousel .carousel-control {
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    top: 50%;
+    background: none;
+}
+
+.carousel-control i {
+    font-size: 68px;
+    line-height: 42px;
+    position: absolute;
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.8);
+    text-shadow: 0 3px 3px #e6e6e6, 0 0 0 #000;
+}
+
+.carousel .carousel-indicators {
+    bottom: -40px;
+}
+
+.carousel-indicators li,
+.carousel-indicators li.active {
+    width: 10px;
+    height: 10px;
+    margin: 1px 3px;
+    border-radius: 50%;
+}
+
+.carousel-indicators li {
+    background: #999;
+    border-color: transparent;
+    box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-indicators li.active {
+    background: #555;
+    box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/*CAROUSEL END*/
+
+#button-addon1 {
+    color: #ffc371;
+}
+
+i {
+    color: #ffc371;
+}
+
+.form-control::placeholder {
+    font-size: 0.95rem;
+    color: #aaa;
+    font-style: italic;
+}
+
+.form-control.shadow-0:focus {
+    box-shadow: none;
+}
+
+.child {
+    position: absolute;
+    top: 100px;
+}
+
+.parent {
+    position: relative;
+}
+
+.rightPic {
+    float: right;
+}
+
+.clear {
+    clear: right;
+}
+
+.horizontal {
+    flex-direction: row;
+    align-items: center;
+}
+
+.horizontalImage {
+    width: 75%;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+@media only screen and (max-width: 768px) {
+    .horizontal {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .horizontalImage {
+        width: fixed;
+    }
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    filter: invert(100%);
+    top: 85%;
+}
+
+/*TIMELINE*/
+.timelineContainer {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0;
+    background-color: white;
+}
+
+.timeline {
+    width: 80%;
+    height: auto;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline ul {
+    list-style: none;
+}
+
+.timeline ul li {
+    padding: 20px;
+    background-color: #1e1f22;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.timeline ul li:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-content h1 {
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 300;
+}
+
+.timeline-content .date {
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+@media only screen and (min-width: 768px) {
+    .timeline:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 100%;
+        background-color: gray;
+    }
+
+    .timeline ul li {
+        width: 50%;
+        position: relative;
+        margin-bottom: 50px;
+    }
+
+    .timeline ul li:nth-child(odd) {
+        float: left;
+        clear: right;
+        transform: translateX(-30px);
+        border-radius: 20px 0px 20px 20px;
+    }
+
+    .timeline ul li:nth-child(even) {
+        float: right;
+        clear: left;
+        transform: translateX(30px);
+        border-radius: 0px 20px 20px 20px;
+    }
+
+    .timeline ul li::before {
+        content: "";
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background-color: gray;
+        top: 0px;
+    }
+
+    .timeline ul li:nth-child(odd)::before {
+        transform: translate(50%, -50%);
+        right: -30px;
+    }
+
+    .timeline ul li:nth-child(even)::before {
+        transform: translate(-50%, -50%);
+        left: -30px;
+    }
+
+    .timeline-content .date {
+        position: absolute;
+        top: -30px;
+    }
+
+    .timeline ul li:hover::before {
+        background-color: aqua;
+    }
+}
