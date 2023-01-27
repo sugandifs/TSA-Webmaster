@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap');
 
+
+.message {
+    background-color:blue;
+    border-radius:5px;
+}
 .align,
 .form-group {
     margin-left: 20px;

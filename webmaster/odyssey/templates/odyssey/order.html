@@ -6,7 +6,7 @@
 <div class="card card-body align marginTop">
     {% if messages %}
         {% for message in messages %}
-            <div class = "card-title">
+            <div class = "card-title" class = "message">
                 {{message}}
             </div>
         {% endfor %}
@@ -59,7 +59,7 @@
         <br>
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="tourChoice">First Name</label>
+                <label for="tourChoice">Choose Your Tour</label><br>
                 <select name = "tourChoice">
                     <option value = "orbital">$10k Orbital Tour</option>
                     <option value = "iss">$10k ISS Tour</option>
@@ -105,7 +105,7 @@
         </div>
         <div class="form-group">
             <label for="inputAddress2">Address 2</label>
-            <input type="text" class="form-control" id="inputAddress2" name = "inputAddress" placeholder="Apartment, studio, or floor">
+            <input type="text" class="form-control" id="inputAddress2" name = "inputAddress2" placeholder="Apartment, studio, or floor">
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -163,7 +163,7 @@
             </div>
             <div class="col-md-3 mb-3">
                 <label for="cc-cvv">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" name = "cc-ccv" placeholder="" required="">
+                <input type="text" class="form-control" id="cc-cvv" name = "cc-cvv" placeholder="" required="">
                 <div class="invalid-feedback"> Security code required </div>
             </div>
         </div>
