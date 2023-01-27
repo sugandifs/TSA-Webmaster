@@ -40,7 +40,7 @@ def register(request):
 #Needs to update google spreadsheet
 
 def isEmptyData(row):
-    return sheet.cell(row,1).value 
+    return sheet.cell(row,1).value is None
 
 def register_view(request):
     if request.method == "POST":
