@@ -11,7 +11,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 # Create your views here.
 
-gc = gspread.service_account(filename='static/odyssey/credentials.json')
+gc = gspread.service_account(filename='odyssey/static/odyssey/credentials.json')
 gsheet = gc.open_by_url("https://docs.google.com/spreadsheets/d/1GwTC2kRQuuncIsxlGKaz68ynEZmeo49tzSszGuxmD0E/")
 
 
