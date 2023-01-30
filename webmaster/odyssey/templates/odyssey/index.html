@@ -47,7 +47,7 @@
             <div class="box">
                 <h2><b>YOUR SAFETY IS OUR GUARANTEE</b></h2>
                 <p>With decades of research and development, we've mastered the art of space travel.</p>
-                <a href="#safety">Learn more</a>
+                <a href="{% url 'safety' %}">Learn more</a>
             </div>
             <div class="box">
                 <h2><b>BEGIN YOUR JOURNEY</b></h2>
@@ -90,41 +90,6 @@
 <br>
 <h2 class="headingOrange"><b>FIND YOUR <span class="orange">ODYSSEY</span></b></h2>
 
-<!--<div class="card-group align">
-    <div class="card">
-        <img class="card-img-top" src="{% static 'odyssey/assets/253x180.png' %}" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">ORBITAL TOUR</h5>
-            <p class="card-text">tour that orbits the earth, iss, moon and other planets maybe.</p>
-        </div>
-        <div class="card-footer">
-            <a href="#" class="card-link">View the itinerary</a>
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="{% static 'odyssey/assets/253x180.png' %}" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">ISS TOUR</h5>
-            <p class="card-text">flies to iss and provided a tour inside the iss. will orbit the earth and moon before
-                landing.</p>
-        </div>
-        <div class="card-footer">
-            <a href="#" class="card-link">View the itinerary</a>
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="{% static 'odyssey/assets/253x180.png' %}" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">MOON TOUR</h5>
-            <p class="card-text">flies and lands on the moon with a guided tour on where the first moon landing is. will
-                leave and orbit iss and earth before landing on earth.</p>
-        </div>
-        <div class="card-footer">
-            <a href="#" class="card-link">View the itinerary</a>
-        </div>
-    </div>
-</div>-->
-
 <br>
 <div class="containerforCards">
     <div class="orbitalCard">
@@ -132,7 +97,7 @@
             <p>The Orbital Tour will bring you on board the Nausica to get a captivating view of the Earth, Moon, and
                 its nearby planets. With the large windows of the Nausica, we guarantee that every minute of this trip
                 will be filled with astounding views.</p>
-            <a href="#safety">Learn more</a>
+            <a href="#">Learn more</a>
         </div>
     </div>
 
@@ -141,7 +106,7 @@
             <p>The ISS Tour will take you on board the International Space Station and experience what it's like to be
                 an astronaut. Our knowledgeable pilots will provide you with a guided tour of the ISS before orbitting
                 around the moon and returning back home to Earth.</p>
-            <a href="#safety">Learn more</a>
+            <a href="#">Learn more</a>
         </div>
     </div>
 
@@ -151,7 +116,7 @@
                 a guided tour about moon rocks and other cool
                 facts about the moon. On your way home, you will have the opportunity to orbit the Earth and its nearby
                 planets.</p>
-            <a href="#safety">Learn more</a>
+            <a href="#">Learn more</a>
 
         </div>
     </div>
@@ -180,7 +145,7 @@
                 familiarize
                 yourself with the Nausica and your very own spacecrew.
             </p>
-            <p><a href="#safety">Learn more.</a></p>
+            <p><a href="{% url 'safety' %}">Learn more.</a></p>
     </div>
 
     <img src="{% static 'odyssey/assets/nausicaAstronauts.jpg' %}">

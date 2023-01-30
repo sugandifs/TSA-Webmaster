@@ -3,62 +3,203 @@
 {% block body %}
 {% load static %}
 
-<h3>Safety</h3>
-
-<h2 class="heading">MEET THE NAUSICA</h2>
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="card horizontal text-right">
-                <img src="{% static 'odyssey/assets/nausica3.jpg' %}" class="card-img-top horizontalImage" />
-                <div class="card-body">
-                    <h5 class="card-title">BUILT WITH YOU IN MIND</h5>
-                    <p class="card-text">
-                        You will feel right at
-                        home in our cockpit, courtesy of our minimalistic styling and expansive layout. The Nausica was
-                        designed with the latest technologies to ensure your safety and comfort in your odyssey to
-                        space.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="card horizontal text-right">
-                <img src="{% static 'odyssey/assets/nausicaAstronauts.jpg' %}" class="card-img-top horizontalImage" />
-                <div class="card-body">
-                    <h5 class="card-title">BEYOND COMFORT</h5>
-                    <p class="card-text">
-                        The Nausica's seats were built with memory foam to ensure maximum comfort during space flight.
-                        We have employed world-class ergonomists to ensure the absolute best seating position.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="card horizontal text-right">
-                <img src="{% static 'odyssey/assets/nausicaSeatbelts.jpg' %}" class="card-img-top horizontalImage" />
-                <div class="card-body">
-                    <h5 class="card-title">ENSURING SAFETY</h5>
-                    <p class="card-text">
-                        Our seatbelts are infused with state-of-the-art technology to guarantee your safety. More
-                        promotiona stuff about saefty sadhkjashdkahshdkah
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+<div class="parallaxSafety">
 </div>
 
-<h2>Internal safety featuers of the nausica</h2>
-<p>proper insulation, radiation protection, constant communication and navigation, ground-to-space tracking, enforced
-    metal outing to protect against collisions</p>
+<br>
+<br>
+
+<h4 class="headingOrange"><b>ENSURING <span class="orange">YOUR SAFETY</span></b></h4>
+<p class="centeredText text">Space travel is rigorous-- even for seasoned astronauts. So, we've prepared a 2-month long
+    training regime to get you ready for take off.
+</p>
+
+<div class="flex-parent">
+    <div class="input-flex-container">
+        <input type="radio" name="timeline-dot" data-description="1910" checked>
+        <div class="dot-info" data-description="1910">
+            <span class="year">D60</span>
+            <span class="label">THE EXAM</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1920">
+        <div class="dot-info" data-description="1920">
+            <span class="year">D55</span>
+            <span class="label">SPACESUIT FITTING</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1930">
+        <div class="dot-info" data-description="1930">
+            <span class="year">D52</span>
+            <span class="label">START TRAINING</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1940">
+        <div class="dot-info" data-description="1940">
+            <span class="year">D30</span>
+            <span class="label">POOL DAY</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1950">
+        <div class="dot-info" data-description="1950">
+            <span class="year">D20</span>
+            <span class="label">MEET YOUR PILOTS</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1960">
+        <div class="dot-info" data-description="1960">
+            <span class="year">D18</span>
+            <span class="label">G FORCES</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1970">
+        <div class="dot-info" data-description="1970">
+            <span class="year">D16</span>
+            <span class="label">SPACESUIT TRAINING</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1980">
+        <div class="dot-info" data-description="1980">
+            <span class="year">D14</span>
+            <span class="label">QUARANTINE</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1990">
+        <div class="dot-info" data-description="1990">
+            <span class="year">D10</span>
+            <span class="label">ANOTHER EXAM</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="2000">
+        <div class="dot-info" data-description="2000">
+            <span class="year">LAUNCH</span>
+            <span class="label">TAKE OFF</span>
+        </div>
+        <div id="timeline-descriptions-wrapper">
+            <p data-description="1910">After you book your tour, you will be asked to submit a preliminary physical
+                exam. We will be looking for these specific things: </p>
+            <p data-description="1920">Once you've passed your physical, it's time to officially your start your
+                Odyssey. You will be fitted into your very own custom spacesuit, complete with personal adornments.</p>
+            <p data-description="1930">Now that your spacesuit is done, it's time to train your body and mind. For the
+                next 22 days, we will create a balanced diet for you to ensure your top health. Every day will be
+                different and tougher than the previous day, but we believe in you!</p>
+            <p data-description="1940">You've passed the first stage of training. Now, it's finally time for you to put
+                that spacesuit to use. Slowly but surely, we will train you to be able to swim 3 lengths of an Olympic
+                swimming pool in your spacesuit.</p>
+            <p data-description="1950">You'll get to know your pilots and the rest of your spacecrew through some
+                team-building exercises.</p>
+            <p data-description="1960">Next, you'll spend the next few days training in our specialized facilities,
+                where we will acclimatize you to the heavy G-forces during travel.</p>
+            <p data-description="1970">As you continue your daily training, you will be taught how to put on your
+                spacesuit and of the many functions it has.</p>
+            <p data-description="1980">It's a routine for astronauts to be quarantined two weeks before launch, to make
+                sure that you are as healthy as you can be when you travel to space.</p>
+            <p data-description="1990">Today is when you will take a full-length physical exam to guarantee your health
+                during space travel.</p>
+            <p data-description="2000">The day has finally arrived. Off you go to your Odyssey!</p>
+        </div>
+    </div>
+</div>
+
+<div class="parallaxTransition">
+</div>
+
+<br>
+<br>
+
+<h4 class="subheading">INTRODUCING</h4>
+<h4 class="headingOrange"><b>THE NAUSICA</b></h4>
+<p class="centeredText text">You will feel right at
+    home in our cockpit, courtesy of our minimalistic styling and expansive layout. The Nausica was
+    designed with the latest technologies to ensure your safety and comfort in your odyssey to
+    space.
+</p>
+
+<br>
+
+<div class="training">
+    <div class="trainingWords">
+        <br>
+        <br>
+        <h4>BUILT WITH</h4>
+        <h3><b>YOU IN MIND</b></h4>
+            <p>The Nausica's seats were built with memory foam to ensure maximum comfort during space flight.
+                We have employed world-class ergonomists to ensure the absolute best seating position.</p>
+    </div>
+
+    <img src="{% static 'odyssey/assets/nausicaInterior.jpeg' %}" width="100%">
+</div>
+
+<div class="training">
+
+    <img src="{% static 'odyssey/assets/nausicaSeatbelts.jpg' %}" width="100%">
+
+    <div class="trainingWords">
+        <br>
+        <h4>WE GUARANTEE</h4>
+        <h3><b>YOUR SAFETY</b></h4>
+            <p>Our seatbelts were built by top engineers with state-of-the-art technology to ensure maximum comfort and
+                safety during flight. Your safety and comfort is our promise.
+            </p>
+    </div>
+</div>
+
+<br>
+<br>
+
+<div class="parallaxTransition">
+</div>
+
+<br>
+<br>
+
+<h4 class="headingOrange"><b>LAUNCH AND <span class="orange">RECOVERY</span></b></h4>
+<p class="centeredText text">To keep the Odyssey's promise, we have incorporated a complex launch and recovery system
+    powered by our latest technologies. After all, Odyssey will stand by your side in your journey to space.
+</p>
+
+<br>
+<br>
+
+<div class="launchAndRecovery">
+
+
+    <div class="launchRecovery2">
+        <div class="hoverdiv2">
+            <p>Odyssey's top engineers are there to walk you towards the Nausica and ensure that all systems are good
+                for launch. Our propellants are built with only the best materials and top-quality fuel to ensure a
+                smooth journey and release.
+            </p>
+        </div>
+    </div>
+
+    <div class="launchRecovery1">
+        <div class="hoverdiv2">
+            <p>The Nausica's engine will separate three minutes into the flight, and the Nausica capsule will separate
+                from its second stage. From this point, our pilots will make contact with Odyssey headquarters and check
+                all systems. On the third day of orbit, the Nausica will open its thrusters to bring you towards your
+                destination.</p>
+        </div>
+    </div>
+
+    <div class="launchRecovery4">
+        <div class="hoverdiv2">
+            <p>After you've finished your odyssey in space, the Nausica will end off your adventure with a splash in the
+                Pacific Ocean. Our
+                capsules are made with durable heat shields that protects its interior from the intense temperatures of
+                re-entry.Thanks to our cutting-edge navigation systems, our recovery crew can quickly track the
+                spacecraft's location and bring you home safely. </p>
+        </div>
+    </div>
+
+    <div class="launchRecovery3">
+        <div class="hoverdiv2">
+            <p>Oddysey's recovery crews will take back the main capsule, which will be reused for the next flight.
+                Before taking it in for maintenance, we provide you an opportunity to take pictures in front of the
+                capsule to mark the end of your journey.</p>
+        </div>
+    </div>
+
+</div>
+
+<br>
+<br>
+
+<p class="centeredText text"><b> Spaceflight is no easy journey, and we'd like to thank you for
+        choosing to fly with Odyssey.</b></p>
+
+<br>
+<br>
 
 {% endblock %}
