@@ -1,35 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inconsolata&family=Karla:wght@500&family=Oswald&display=swap');
 
-
-.message {
-    background-color:blue;
-    border-radius:5px;
+.body {
+    background: #f8f9fa;
 }
+
+footer,
+.container,
+.bg-white {
+    background: #14213D;
+    font-family: 'Karla', sans-serif;
+}
+
+footer .text-uppercase {
+    color: #f8f9fa;
+}
+
 .align,
 .form-group {
     margin-left: 20px;
     margin-right: 20px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Karla', sans-serif;
 
 }
 
 h1 {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Karla', sans-serif;
     font-size: 1000%;
     color: whitesmoke;
 }
 
 .heading {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Karla', sans-serif;
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left: 20px;
     margin-right: 20px;
+    font-size: 300%;
+    text-align: center;
 }
 
 .subheading {
-    font-family: 'Roboto', sans-serif;
-    color: whitesmoke;
+    font-family: 'Karla', sans-serif;
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #fb8b24;
+    font-size: 150%;
+}
+
+.headingOrange {
+    font-family: 'Karla', sans-serif;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 400%;
+    text-align: center;
+}
+
+.orange {
+    color: #fb8b24;
 }
 
 .marginTop {
@@ -37,29 +66,40 @@ h1 {
 }
 
 .text {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inconsolata', monospace;
     color: black;
     margin-left: 20px;
     margin-right: 20px;
+    font-size: 18px;
+}
+
+.centeredText {
+    font-family: 'Inconsolata', monospace;
+    color: black;
+    margin-left: 300px;
+    margin-right: 300px;
+    text-align: center;
 }
 
 nav {
-    font-family: 'Oswald', sans-serif;
-
+    font-family: 'Karla', sans-serif;
+    position: fixed;
+    transition: 1s;
 }
 
 .card-text {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inconsolata', monospace;
 }
 
 .card-title {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Karla', sans-serif;
 }
 
 
 @media only screen and (max-device-width: 1366px) {
 
     .parallaxIndex,
+    .parallaxGradient,
     .parallaxVehicle {
         background-attachment: scroll;
     }
@@ -68,7 +108,7 @@ nav {
 .parallaxIndex {
     /* The image used */
     background-image: url("assets/homePage.jpg");
-    opacity: 0.80;
+
 
     /* Set a specific height */
     min-height: 800px;
@@ -80,10 +120,21 @@ nav {
     background-size: cover;
 }
 
-.parallaxVehicle {
-    background-image: url("assets/nausica.jpg");
+.parallaxGradient {
+    background-image: url("assets/cool-background.png");
 
-    min-height: 300px;
+    min-height: 400px;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallaxVehicle {
+    background-image: url("assets/nausica2.jpg");
+
+    min-height: 400px;
 
     background-attachment: fixed;
     background-position: center;
@@ -98,104 +149,20 @@ nav {
 .caption {
     position: absolute;
     left: 0;
-    top: 55%;
-    width: 100%;
-    text-align: center;
-}
-
-/* TESTIMONIAL CSS */
-.col-center {
-    margin: 0 auto;
-    float: none !important;
-}
-
-.carousel {
-    margin: 50px auto;
-    padding: 0 70px;
-}
-
-.carousel-item {
-    color: #999;
-    font-size: 14px;
-    text-align: center;
-    overflow: hidden;
-    min-height: 290px;
-}
-
-.carousel .item .img-box {
-    width: 135px;
-    height: 135px;
-    margin: 0 auto;
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 50%;
-}
-
-.carousel .img-box img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    border-radius: 50%;
-}
-
-.carousel .testimonial {
-    padding: 30px 0 10px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-}
-
-.carousel .overview {
-    font-style: italic;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-}
-
-.carousel .overview b {
-    text-transform: uppercase;
-    color: #db584e;
-}
-
-.carousel .carousel-control {
-    width: 40px;
-    height: 40px;
-    margin-top: -20px;
     top: 50%;
-    background: none;
+    width: 100%;
+    text-align: center;
 }
 
-.carousel-control i {
-    font-size: 68px;
-    line-height: 42px;
+.vehicleCaption {
     position: absolute;
-    display: inline-block;
-    color: rgba(0, 0, 0, 0.8);
-    text-shadow: 0 3px 3px #e6e6e6, 0 0 0 #000;
+    left: 0;
+    top: 500%;
+    width: 100%;
+    text-align: center;
+    color: whitesmoke;
+    font-size: 600%;
 }
-
-.carousel .carousel-indicators {
-    bottom: -40px;
-}
-
-.carousel-indicators li,
-.carousel-indicators li.active {
-    width: 10px;
-    height: 10px;
-    margin: 1px 3px;
-    border-radius: 50%;
-}
-
-.carousel-indicators li {
-    background: #999;
-    border-color: transparent;
-    box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.2);
-}
-
-.carousel-indicators li.active {
-    background: #555;
-    box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.2);
-}
-
-/*CAROUSEL END*/
 
 #button-addon1 {
     color: #ffc371;
@@ -260,119 +227,295 @@ i {
     top: 85%;
 }
 
-/*TIMELINE*/
-.timelineContainer {
-    min-height: 100vh;
-    width: 100%;
+/* GLASS MORPHISM */
+.cards {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 100px 0;
-    background-color: white;
+    min-height: 100vh;
+    background-image: url(odyssey/static/nausica.jpg);
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    background-position: center center;
+
+
 }
 
-.timeline {
-    width: 80%;
-    height: auto;
-    max-width: 800px;
-    margin: 0 auto;
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 30px;
+}
+
+.wrapper .box {
+    width: 400px;
+    height: 300px;
+    border-radius: 15px;
+    transition: transform 500ms ease-out;
+    overflow: hidden;
+    color: #fff;
+    padding: 5%;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.box h2 {
+    margin-top: 10px;
+    font-size: 25px;
+    margin-bottom: 30px;
+    font-family: 'Karla', sans-serif;
+}
+
+.box p {
+    line-height: 1.9;
+    font-family: 'Inconsolata', monospace;
+
+}
+
+.box a {
+    border: none;
+    background: #fff;
+    padding: 15px 50px;
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 50px;
+    font-family: 'Karla', sans-serif;
+
+}
+
+.wrapper .box:before {
+    content: '';
+    background: rgba(255, 255, 255, 0.3);
+    width: 60%;
+    height: 100%;
+    top: 0%;
+    left: -125%;
+    transform: skew(45deg);
+    position: absolute;
+    animation-direction: left;
+    transition-duration: 500ms;
+}
+
+.wrapper .box:hover {
+    transform: translateY(-5%);
+}
+
+/* GLASS MORPHISM END*/
+
+
+/*TESTIMONIALS*/
+.border-radius {
+    border-radius: 30px;
+}
+
+.wrapperTesti {
+    width: 700px;
+    height: 200px;
+    display: table;
+    border: 5px solid #111;
+    margin: 50px auto;
+    padding: 20px;
     position: relative;
 }
 
-.timeline ul {
-    list-style: none;
+.wrapperTesti:after,
+.wrapperTesti:before {
+    content: '';
+    position: absolute;
+    font-family: fontAwesome;
+    font-size: 50px;
+    color: #fb8b24;
+    background: #f8f9fa;
 }
 
-.timeline ul li {
-    padding: 20px;
-    background-color: #1e1f22;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 20px;
+.wrapperTesti:after {
+    content: '\f10d';
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    box-shadow: 10px 10px 0 #f8f9fa;
 }
 
-.timeline ul li:last-child {
-    margin-bottom: 0;
+.wrapperTesti:before {
+    content: '\f10e';
+    bottom: 0;
+    right: 0;
+    transform: translate(50%, 50%);
+    box-shadow: -10px -10px 0 #f8f9fa;
 }
 
-.timeline-content h1 {
-    font-weight: 500;
-    font-size: 25px;
-    line-height: 30px;
-    margin-bottom: 10px;
+.description {
+    display: table-cell;
+    width: 80%;
+    vertical-align: middle;
 }
 
-.timeline-content p {
+.description {
+    font-size: 17px;
+    font-family: 'Inconsolata', monospace;
+}
+
+.author {
+    font-family: 'Karla', sans-serif;
+}
+
+/*TESTIMONIALS END*/
+
+/*TOUR CARDS */
+.containerforCards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+}
+
+.labels {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-family: 'Karla', sans-serif;
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.orbitalCard {
+    position: relative;
+    display: block;
+    width: 400px;
+    height: 300px;
+    background: #000;
+    background: url("assets/orbital.jpg");
+    background-size: cover;
+    margin: 5px auto;
+    border-radius: 32px;
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+}
+
+.issCard {
+    position: relative;
+    display: block;
+    width: 400px;
+    height: 300px;
+    background: #000;
+    background: url("assets/iss.jpg");
+    background-size: cover;
+    margin: 5px auto;
+    border-radius: 32px;
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+}
+
+.moonCard {
+    position: relative;
+    display: block;
+    width: 400px;
+    height: 300px;
+    background: #000;
+    background: url("assets/moon.jpg");
+    background-size: cover;
+    margin: 5px auto;
+    border-radius: 32px;
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+}
+
+.hoverdiv {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 32px;
+    opacity: 0;
+    color: whitesmoke;
+    transition: all 0.3s ease-in-out;
+    transition-delay: 0.3s;
+    box-sizing: border-box;
+    font-family: 'Inconsolata', monospace;
+}
+
+.hoverdiv a {
+    border: none;
+    background: #fff;
+    padding: 10px 30px;
+    display: inline-block;
+    margin-top: 5px;
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 50px;
+    font-family: 'Karla', sans-serif;
+}
+
+
+.orbitalCard:hover .hoverdiv,
+.issCard:hover .hoverdiv,
+.moonCard:hover .hoverdiv,
+.containerCards:active .hoverdiv {
+    opacity: 1;
+}
+
+.orbitalCard:hover,
+.issCard:hover,
+.moonCard:hover {
+    transform: scale(1.03);
+}
+
+/*TOUR CARDS END*/
+
+.training {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+}
+
+.trainingWords p {
+    font-family: 'Inconsolata', monospace;
     font-size: 16px;
-    line-height: 30px;
-    font-weight: 300;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    text-align: center;
 }
 
-.timeline-content .date {
-    font-size: 12px;
-    font-weight: 300;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
+.trainingWords h3 {
+    font-family: 'Karla', sans-serif;
+    color: #fb8b24;
+    font-size: 50px;
+    text-align: center;
 }
 
-@media only screen and (min-width: 768px) {
-    .timeline:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 2px;
-        height: 100%;
-        background-color: gray;
-    }
+.trainingWords h4 {
+    margin-top: 70px;
+    font-family: 'Karla', sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
 
-    .timeline ul li {
-        width: 50%;
-        position: relative;
-        margin-bottom: 50px;
-    }
-
-    .timeline ul li:nth-child(odd) {
-        float: left;
-        clear: right;
-        transform: translateX(-30px);
-        border-radius: 20px 0px 20px 20px;
-    }
-
-    .timeline ul li:nth-child(even) {
-        float: right;
-        clear: left;
-        transform: translateX(30px);
-        border-radius: 0px 20px 20px 20px;
-    }
-
-    .timeline ul li::before {
-        content: "";
-        position: absolute;
-        height: 20px;
-        width: 20px;
-        border-radius: 50%;
-        background-color: gray;
-        top: 0px;
-    }
-
-    .timeline ul li:nth-child(odd)::before {
-        transform: translate(50%, -50%);
-        right: -30px;
-    }
-
-    .timeline ul li:nth-child(even)::before {
-        transform: translate(-50%, -50%);
-        left: -30px;
-    }
-
-    .timeline-content .date {
-        position: absolute;
-        top: -30px;
-    }
-
-    .timeline ul li:hover::before {
-        background-color: aqua;
-    }
+.trainingWords a {
+    border: none;
+    background: #14213D;
+    padding: 10px 30px;
+    display: inline-block;
+    margin-top: 5px;
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 50px;
+    font-family: 'Karla', sans-serif;
+    color: #f8f9fa;
 }

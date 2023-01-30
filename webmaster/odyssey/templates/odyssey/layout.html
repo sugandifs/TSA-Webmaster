@@ -28,42 +28,57 @@
 
     <link type="text/css" href="{% static 'odyssey/styles.css' %}" rel="stylesheet">
 
+    <script>window.onscroll = function () { scrollFunction() };</script>
+
 </head>
 
 <body>
     <!--navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'index' %}">ODYSSEY</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark shadow-5-strong">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'odyssey/assets/odysseyLogo.png' %}" width="135" height="60" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'index' %}">HOME<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'program' %}">OUR PROGRAM<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'safety' %}">YOUR SAFETY<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'register' %}">BOOK A TOUR<span
-                            class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'contact us' %}">CONTACT US<span
-                            class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item text-muted">
-                    <a class="nav-link" href="{% url 'sources' %}">TSA DOCUMENTATION<span class="sr-only"></span></a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'index' %}">HOME</a>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            OUR PROGRAM
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#program">OVERVIEW</a>
+                            <a class="dropdown-item" href="#">ORBITAL TOUR</a>
+                            <a class="dropdown-item" href="#">ISS TOUR</a>
+                            <a class="dropdown-item" href="#">MOON TOUR</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'safety' %}">YOUR SAFETY</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'register' %}">BOOK A TOUR</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'contact us' %}">CONTACT US</a>
+                    </li>
+                    <li class="nav-item text-muted">
+                        <a class="nav-link" href="{% url 'sources' %}">TSA DOCUMENTATION</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
+
     <!--start website (inherited to other webpages) -->
     <div class="body">
         {% block body %}
@@ -71,10 +86,8 @@
     </div>
 </body>
 
-<hr>
-
 <!-- Footer -->
-<footer class="bg-white">
+<footer>
     <div class="container py-5">
         <div class="row py-4">
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="img/logo.png" alt="" width="180" class="mb-3">
@@ -102,10 +115,10 @@
             <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
                 <h6 class="text-uppercase font-weight-bold mb-4">odyssey</h6>
                 <ul class="list-unstyled mb-0">
-                    <li class="mb-2"><a href="#" class="text-muted">Our Program</a></li>
-                    <li class="mb-2"><a href="#" class="text-muted">Your Safety</a></li>
-                    <li class="mb-2"><a href="#" class="text-muted">Book a Trip</a></li>
-                    <li class="mb-2"><a href="#" class="text-muted">Contact Us</a></li>
+                    <li class="mb-2"><a href="#program" class="text-muted">Our Program</a></li>
+                    <li class="mb-2"><a href="{% url 'safety' %}" class="text-muted">Your Safety</a></li>
+                    <li class="mb-2"><a href="{% url 'register' %}" class="text-muted">Book a Trip</a></li>
+                    <li class="mb-2"><a href="{% url 'contact us' %}" class="text-muted">Contact Us</a></li>
                 </ul>
             </div>
             <div class="col-lg-4 col-md-6 mb-lg-0">
