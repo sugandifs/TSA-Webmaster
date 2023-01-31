@@ -6,7 +6,7 @@
 <div class="parallaxIndex">
     <div class="caption">
         <h1><b>ODYSSEY</b></h1>
-        <a class="btn btn-light" href="{% url 'register'%}">Where dreams turn to reality.</a>
+        <a class="btn btn-light" href="{% url 'register'%}" id="homeBtn">Where dreams turn to reality.</a>
     </div>
 </div>
 
@@ -36,26 +36,36 @@
 <br>
 
 <div class="parallaxGradient">
-    <div class="cards">
-        <div class="wrapper">
-            <div class="box">
-                <h2><b>OUR PROGRAM</b></h2>
-                <p>We know that space is an interesting realm to explore. So, here at Odyssey, we let you choose what
-                    you want to do in outerspace. </p>
-                <a href="#program">Learn more</a>
-            </div>
-            <div class="box">
-                <h2><b>YOUR SAFETY IS OUR GUARANTEE</b></h2>
-                <p>With decades of research and development, we've mastered the art of space travel.</p>
-                <a href="{% url 'safety' %}">Learn more</a>
-            </div>
-            <div class="box">
-                <h2><b>BEGIN YOUR JOURNEY</b></h2>
-                <p>Can't wait to chase your dreams? We understand. Go get a head start on your odyssey to space.</p>
-                <a href="{% url 'register' %}">Learn more</a>
-            </div>
+
+    <br>
+    <br>
+
+    <div class="containerforCards">
+        <div class="programCard">
+            <h2><b>OUR PROGRAM</b></h2>
+            <p>We know that space is an interesting realm to explore. So, here at Odyssey, we let you choose what
+                you want to do in outerspace.</p>
+            <p><a href="#program">Learn more</a></p>
+        </div>
+
+        <div class="programCard">
+            <h2><b>YOUR SAFETY IS OUR GUARANTEE</b></h2>
+            <p>With decades of research and development, we've mastered the art of space travel.</p>
+            <p><a href="{% url 'safety' %}">Learn more</a></p>
+
+        </div>
+
+        <div class="programCard">
+            <h2><b>BEGIN YOUR JOURNEY</b></h2>
+            <p>Can't wait to chase your dreams? We understand. Go get a head start on your odyssey to space.</p>
+            <br>
+            <p><a href="{% url 'register' %}">Book a tour</a></p>
         </div>
     </div>
+
+    <br>
+    <br>
+
 </div>
 
 <br>
@@ -91,33 +101,38 @@
 <h2 class="headingOrange"><b>FIND YOUR <span class="orange">ODYSSEY</span></b></h2>
 
 <br>
+
 <div class="containerforCards">
     <div class="orbitalCard">
         <div class="hoverdiv">
+            <div class="labels2"><b>$10k ORBITAL TOUR</b></div>
+
             <p>The Orbital Tour will bring you on board the Nausica to get a captivating view of the Earth, Moon, and
                 its nearby planets. With the large windows of the Nausica, we guarantee that every minute of this trip
                 will be filled with astounding views.</p>
-            <a href="#">Learn more</a>
+            <!--<a href="#">Learn more</a>-->
         </div>
     </div>
 
     <div class="issCard">
         <div class="hoverdiv">
+            <div class="labels2"><b>$10k ISS TOUR</b></div>
+
             <p>The ISS Tour will take you on board the International Space Station and experience what it's like to be
                 an astronaut. Our knowledgeable pilots will provide you with a guided tour of the ISS before orbitting
                 around the moon and returning back home to Earth.</p>
-            <a href="#">Learn more</a>
+            <!--<a href="#">Learn more</a>-->
         </div>
     </div>
 
     <div class="moonCard">
         <div class="hoverdiv">
+            <div class="labels2"><b>$20k MOON TOUR</b></div>
+
             <p>The Moon Tour will take you to the moon and have some fun in zero gravity. Odyssey's pilots will give you
                 a guided tour about moon rocks and other cool
                 facts about the moon. On your way home, you will have the opportunity to orbit the Earth and its nearby
                 planets.</p>
-            <a href="#">Learn more</a>
-
         </div>
     </div>
 </div>

@@ -46,19 +46,20 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'index' %}">HOME</a>
                     </li>
-                    <li class="nav-item dropdown active">
+                    <!--<li class="nav-item dropdown active">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             OUR PROGRAM
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#program">OVERVIEW</a>
                             <a class="dropdown-item" href="#">ORBITAL TOUR</a>
                             <a class="dropdown-item" href="#">ISS TOUR</a>
                             <a class="dropdown-item" href="#">MOON TOUR</a>
                         </div>
+                    </li>-->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'index' %}#program">OUR PROGRAM</a>
                     </li>
-
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'safety' %}">YOUR SAFETY</a>
                     </li>
@@ -116,7 +117,7 @@
                 <ul class="list-unstyled mb-0">
                     <li class="mb-2"><a href="#program" class="text-muted">Our Program</a></li>
                     <li class="mb-2"><a href="{% url 'safety' %}" class="text-muted">Your Safety</a></li>
-                    <li class="mb-2"><a href="{% url 'register' %}" class="text-muted">Book a Trip</a></li>
+                    <li class="mb-2"><a href="{% url 'register' %}" class="text-muted">Book a Tour</a></li>
                     <li class="mb-2"><a href="{% url 'contact us' %}" class="text-muted">Contact Us</a></li>
                 </ul>
             </div>
