@@ -1,0 +1,26 @@
+{% extends 'odyssey/layout.html' %}
+{% block head %}
+{% endblock %}
+{% block body %}
+{% load static %}
+{% if messages %}
+{% for message in messages %}
+<div class="message-snack">{{message}}</div>
+{% endfor %}
+{% endif %}
+<div class="parallaxIndex">
+    <div class="caption">
+        {% if user.is_authenticated %}
+        <h1><b>Odyssey</b></h1>
+        <p>You're already logged in! Feel free to navigate through our website</p>
+        <!--redirect them to profile center-->
+        {% else %}
+        <script src="{% static 'odyssey/login.js' %}"></script>
+        <script>toggleLogin()</script>
+        <script src="{% static 'odyssey/registration.js' %}"></script>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}

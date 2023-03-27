@@ -6,170 +6,591 @@
 <div class="parallaxIndex">
     <div class="caption">
         <h1><b>ODYSSEY</b></h1>
-        <a class="btn btn-light" href="{% url 'register'%}" id="homeBtn">Where dreams turn to reality.</a>
+        <p id="home"><a href="{% url 'register' %}">Where dreams turn to reality.</a></p>
     </div>
 </div>
 
-<br>
-<br>
+<!--<video autoplay muted loop>
+    <source src="/static/odyssey/assets/homeVid2.mp4" type="video/mp4">
+    <source src="/static/odyssey/assets/homeVid2.webm" type="video/webm">
+</video>
 
-<h4 class="subheading">WELCOME TO</h4>
-<h4 class="headingOrange"><b>THE FUTURE</b></h4>
-<p class="centeredText text">Odyssey provides a maginificent, fulfilling, and unique experience for space enthusiasts
-    and
-    explorers alike. With our decades of experience, we will provide you with a safe and comfortable journey as you
-    take a leap towards your dreams.
-</p>
-<br>
-
-<div class="center">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/msZo5YZYlQI" title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-    </iframe>
-</div>
-
-<br>
+<div class="caption">
+    <h1><b>ODYSSEY</b></h1>
+    <p id="home"><a href="{% url 'register' %}">Where dreams turn to reality.</a></p>
+</div>-->
 
 <br>
 <br>
+<br>
+<br>
 
-<div class="parallaxGradient">
+<section class="fadeIn">
+    <h4 class="subheadingTitle">WELCOME TO</h4>
+    <h4 class="headingOrange"><b>THE FUTURE</b></h4>
+    <p class="centeredText text">Odyssey provides a maginificent, fulfilling, and unique experience for space
+        enthusiasts
+        and
+        explorers alike. With our decades of experience, we guarantee you a safe and comfortable journey
+        as you
+        take a leap towards your dreams.
+    </p>
+</section>
 
-    <br>
-    <br>
+<br>
 
-    <div class="containerforCards">
-        <div class="programCard">
-            <h2><b>OUR PROGRAM</b></h2>
-            <p>We know that space is an interesting realm to explore. So, here at Odyssey, we let you choose what
-                you want to do in outerspace.</p>
-            <p><a href="#program">Learn more</a></p>
-        </div>
+<section class="fadeIn">
+    <div class="center">
+        <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/hppiHyYOy-U?autoplay=1&mute=1&loop=1&rel=0&playlist=hppiHyYOy-U&modestbranding=1"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+    </div>
+</section>
 
-        <div class="programCard">
-            <h2><b>YOUR SAFETY IS OUR GUARANTEE</b></h2>
-            <p>With decades of research and development, we've mastered the art of space travel.</p>
-            <p><a href="{% url 'safety' %}">Learn more</a></p>
+<br>
+<br>
+<br>
+<br>
 
-        </div>
 
-        <div class="programCard">
-            <h2><b>BEGIN YOUR JOURNEY</b></h2>
-            <p>Can't wait to chase your dreams? We understand. Go get a head start on your odyssey to space.</p>
+<div class="parallaxGradient fadeIn">
+    <div>
+        <br>
+        <br>
+        <h4 class="headingOrange"><b>HEAR IT FROM <span class="orange">OUR EXPLORERS</span></b></h4>
+        <div class="testicontainer">
+            <div class="testiwrapper">
+                <div class="testicard">
+                    <div class="card-thumb">
+                    </div>
+                    <div class="testicard-body">
+                        <p class="credentials">Aerospace Engineer</p>
+                        <p class="name"><b>JOHN <span class="orange">DOE</span></b></p>
+                        <p class="review">Exploring with Odyssey was the best decision I've ever made. As someone
+                            who
+                            has never been to space before, I
+                            felt incredibly supported and prepared for the rigor of space travel. The pilots and
+                            training staff were
+                            lovely!</p>
+                    </div>
+                </div>
+                <div class="testicard">
+                    <div class="card-thumb2">
+                    </div>
+                    <div class="testicard-body">
+                        <p class="credentials">Retired Astronaut</p>
+                        <p class="name"><b>NEIL <span class="orange">ARMSTRONG</span></b></p>
+                        <p class="review">As a retired astronaut, I can confirm that Odyssey is the right company to
+                            bring you to space. Their training
+                            programs, spaceship safety features, and hospitality are top-tier. The quality of guided
+                            tours and
+                            explanations are among the best I've seen.</p>
+                    </div>
+                </div>
+                <div class="testicard">
+                    <div class="card-thumb3">
+                    </div>
+                    <div class="testicard-body">
+                        <p class="credentials">Space Connoisseur</p>
+                        <p class="name"><b>JANE <span class="orange">DOE</span></b></p>
+                        <p class="review">There are no other space tourism companies that prepared me as well as
+                            Odyssey
+                            has. Their training modules and staff provided clear and concise instruction, and the
+                            journey on the Nausica was one of the smoothest I've been on. I would absolutely
+                            recommend
+                            Odyssey for anyone who is interested in travelling to space!</p>
+                    </div>
+                </div>
+            </div>
             <br>
-            <p><a href="{% url 'register' %}">Book a tour</a></p>
-        </div>
-    </div>
-
-    <br>
-    <br>
-
-</div>
-
-<br>
-<br>
-
-<h4 class="headingOrange"><b>HEAR IT FROM <span class="orange">OUR EXPLORERS</span></b></h4>
-
-<div class="wrapperTesti border-radius">
-    <div class="description">
-        <p>Exploring with Odyssey was the best decision I've ever made. As someone who has never been to space before, I
-            felt incredibly supported and prepared for the rigor of space travel. The pilots and training staff were
-            lovely!</p>
-        <p class="author"><b>John Doe, aerospace engineer</b></p>
-    </div>
-</div>
-
-<div class="wrapperTesti border-radius">
-    <div class="description">
-        <p>As a retired astronaut, I can confirm that Odyssey is the right company to bring you to space. Their training
-            programs, spaceship safety features, and hospitality are top-tier. The quality of guided tours and
-            explanations are among the best I've seen.</p>
-        <p class="author"><b>Niel Armstrong, retired astronaut</b></p>
-    </div>
-</div>
-
-<br>
-<br>
-
-<div class="parallaxVehicle" id="program">
-</div>
-<br>
-<br>
-<h2 class="headingOrange"><b>FIND YOUR <span class="orange">ODYSSEY</span></b></h2>
-
-<br>
-
-<div class="containerforCards">
-    <div class="orbitalCard">
-        <div class="hoverdiv">
-            <div class="labels2"><b>$10k ORBITAL TOUR</b></div>
-
-            <p>The Orbital Tour will bring you on board the Nausica to get a captivating view of the Earth, Moon, and
-                its nearby planets. With the large windows of the Nausica, we guarantee that every minute of this trip
-                will be filled with astounding views.</p>
-            <!--<a href="#">Learn more</a>-->
-        </div>
-    </div>
-
-    <div class="issCard">
-        <div class="hoverdiv">
-            <div class="labels2"><b>$10k ISS TOUR</b></div>
-
-            <p>The ISS Tour will take you on board the International Space Station and experience what it's like to be
-                an astronaut. Our knowledgeable pilots will provide you with a guided tour of the ISS before orbitting
-                around the moon and returning back home to Earth.</p>
-            <!--<a href="#">Learn more</a>-->
-        </div>
-    </div>
-
-    <div class="moonCard">
-        <div class="hoverdiv">
-            <div class="labels2"><b>$20k MOON TOUR</b></div>
-
-            <p>The Moon Tour will take you to the moon and have some fun in zero gravity. Odyssey's pilots will give you
-                a guided tour about moon rocks and other cool
-                facts about the moon. On your way home, you will have the opportunity to orbit the Earth and its nearby
-                planets.</p>
+            <div class="indicators">
+                <button class="active"></button>
+                <button></button>
+                <button></button>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="containerforCards">
-    <div class="labels"><b>$10k ORBITAL TOUR</b></div>
-    <div class="labels"><b>$10k ISS TOUR</b></div>
-    <div class="labels"><b>$20k MOON TOUR</b></div>
+<script>
+    //testimonial function
+    const testiwrapper = document.querySelector(".testiwrapper");
+    const indicators = [...document.querySelectorAll(".indicators button")];
+
+    let currentTestimonial = 0; // Default 0
+
+    indicators.forEach((item, i) => {
+        item.addEventListener("click", () => {
+            console.log("click");
+            indicators[currentTestimonial].classList.remove('active');
+            testiwrapper.style.marginLeft = `-${100 * i}%`;
+            item.classList.add('active');
+            currentTestimonial = i;
+        })
+    })
+</script>
+
+<br>
+<br>
+<br>
+<br>
+
+<h2 id="bookTour" class="headingOrange fadeIn"><b>FIND YOUR <span class="orange">ODYSSEY</span></b></h2>
+
+<p class="centeredText text fadeIn">We know that space is an interesting realm to explore. So, here at Odyssey, we
+    let
+    you choose what
+    you want to do in outerspace.
+</p>
+
+<br>
+<br>
+
+<div class="fadeIn">
+    <div class="card-deck">
+        <div class="card">
+            <img class="card-img-top" src="{% static 'odyssey/assets/orbital.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title"><b>$100k Orbital Tour</b></h5>
+                <div class="underlineSmallLeft"></div>
+                <br>
+                <p class="card-text">The Orbital Tour will bring you on board the Nausica to get a captivating view of
+                    the
+                    Earth,
+                    Moon, and
+                    its nearby astral bodies.</p>
+                <a href="{% url 'register' %}" class="btn btn-primary small">Book now</a>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="{% static 'odyssey/assets/iss.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title"><b>$200k ISS Tour</b></h5>
+                <div class="underlineSmallLeft"></div>
+                <br>
+                <p class="card-text">The ISS Tour will take you on board the International Space Station and experience
+                    what
+                    it's like
+                    to be
+                    an astronaut for a month.</p>
+                <a href="{% url 'register' %}" class="btn btn-primary small">Book now</a>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="{% static 'odyssey/assets/moon2.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title"><b>$300k Moon Tour</b></h5>
+                <div class="underlineSmallLeft"></div>
+                <br>
+                <p class="card-text">The Moon Tour will take you to the moon to have some fun in zero gravity and
+                    collect
+                    moon rocks as souvenirs to bring back home.</p>
+                <a href="{% url 'register' %}" class="btn btn-primary small">Book now</a>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="{% static 'odyssey/assets/homePage2.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title"><b>$500k Deluxe Tour</b></h5>
+                <div class="underlineSmallLeft"></div>
+                <br>
+                <p class="card-text">The Deluxe Tour is an all-inclusive package that combines the Orbital,
+                    ISS, and Moon Tours for an unforgettable experience.</p>
+                <a href="{% url 'register' %}" class="btn btn-primary small">Book now</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <br>
 <br>
+<br>
+<br>
+
+<div id="safety" class="training fadeIn">
+    <div class="trainingWords fadeIn">
+        <br>
+        <h4>ENSURING</h4>
+        <h3><b>YOUR SAFETY</b></h4>
+            <p>With decades of research and development, we've mastered the art of space travel. Your safety is our
+                guarantee.
+            </p>
+    </div>
+
+    <img src="{% static 'odyssey/assets/nausicaSeatbelts.jpg' %}" width="100%">
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<h3 class="subheading fadeIn"><b>01 | Training</b></h3>
+<div class="underline fadeIn"></div>
+
+<br>
+<br>
+
+<p class="centeredText text fadeIn">Space travel is rigorous-- even for seasoned astronauts. So, we've prepared a
+    2-month long
+    training regime to get you ready for take off. Regardless of what tour you chose, our training regime is all
+    included in our tour packages.
+</p>
+
+<div class="flex-parent fadeIn">
+    <div class="input-flex-container">
+        <input type="radio" name="timeline-dot" data-description="1910" checked>
+        <div class="dot-info" data-description="1910">
+            <span class="year">D60</span>
+            <span class="label">THE EXAM</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1920">
+        <div class="dot-info" data-description="1920">
+            <span class="year">D55</span>
+            <span class="label">SPACESUIT FITTING</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1930">
+        <div class="dot-info" data-description="1930">
+            <span class="year">D52</span>
+            <span class="label">START TRAINING</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1940">
+        <div class="dot-info" data-description="1940">
+            <span class="year">D30</span>
+            <span class="label">POOL DAY</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1950">
+        <div class="dot-info" data-description="1950">
+            <span class="year">D20</span>
+            <span class="label">MEET YOUR PILOTS</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1960">
+        <div class="dot-info" data-description="1960">
+            <span class="year">D18</span>
+            <span class="label">G FORCES</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1970">
+        <div class="dot-info" data-description="1970">
+            <span class="year">D16</span>
+            <span class="label">SPACESUIT TRAINING</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1980">
+        <div class="dot-info" data-description="1980">
+            <span class="year">D14</span>
+            <span class="label">QUARANTINE</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="1990">
+        <div class="dot-info" data-description="1990">
+            <span class="year">D10</span>
+            <span class="label">THE FINAL EXAM</span>
+        </div>
+        <input type="radio" name="timeline-dot" data-description="2000">
+        <div class="dot-info" data-description="2000">
+            <span class="year">LAUNCH</span>
+            <span class="label">TAKE OFF</span>
+        </div>
+        <div id="timeline-descriptions-wrapper">
+            <p data-description="1910">After you book your tour, you will be asked to submit a preliminary physical
+                exam. We will be looking for these specific things: 20/20 vision (with or without correction
+                lenses), a
+                blood pressure less than 140/90 while sitting down, and a height between 157.5 cm and 190.5 cm.</p>
+            <p data-description="1920">Once you've passed your physical, it's time to officially your start your
+                Odyssey. You will be fitted into your very own custom spacesuit, complete with personal adornments.
+            </p>
+            <p data-description="1930">Now that your spacesuit is done, it's time to train your body and mind. For
+                the
+                next 22 days, we will create a balanced diet for you to ensure your top health. Every day will be
+                different and tougher than the previous day, but we believe in you!</p>
+            <p data-description="1940">You've passed the first stage of training. Now, it's finally time for you to
+                put
+                that spacesuit to use. Slowly but surely, we will train you to be able to swim 3 lengths of an
+                Olympic
+                swimming pool in your spacesuit.</p>
+            <p data-description="1950">After a hard few weeks, you'll get to know your pilots and the rest of your
+                spacecrew through some
+                team-building exercises!</p>
+            <p data-description="1960">Next, you'll spend the next few days training in our specialized facilities,
+                where we will acclimatize you to the heavy G-forces during travel.</p>
+            <p data-description="1970">As you continue your daily training, you will be taught how to put on your
+                spacesuit and of the many functions it has.</p>
+            <p data-description="1980">It's a routine for astronauts to be quarantined two weeks before launch, to
+                make
+                sure that you are as healthy as you can be when you travel to space.</p>
+            <p data-description="1990">Today is when you will take a full-length physical exam to guarantee your
+                health
+                during space travel.</p>
+            <p data-description="2000">The day has finally arrived. Off you go to your Odyssey!</p>
+        </div>
+    </div>
+</div>
+
+<h3 class="subheadingLeft fadeIn"><b>02 | The Nausica</b></h3>
+<div class="underlineLeft fadeIn"></div>
+
+<br>
+<br>
+<br>
+
+<div class="fadeIn">
+    <div class="tabs">
+
+        <input type="radio" id="tab1" name="tab-control" checked>
+        <input type="radio" id="tab2" name="tab-control">
+        <input type="radio" id="tab3" name="tab-control">
+        <input type="radio" id="tab4" name="tab-control">
+        <ul>
+            <li title="Launch"><label for="tab1" role="button"><svg viewBox="0 0 24 24">
+                        <path xmlns="http://www.w3.org/2000/svg"
+                            d="M8 26.080c-0.4 0-0.8-0.16-1.080-0.44-0.4-0.4-0.56-0.96-0.4-1.52l0.56-1.92c0.12-0.44 0-0.88-0.32-1.16 0 0 0 0 0 0l-1.68-1.68c-0.32-0.32-0.76-0.44-1.2-0.32l-1.92 0.56c-0.52 0.16-1.12 0-1.52-0.4-0.52-0.52-0.6-1.36-0.16-1.96l2.12-3.12c0.6-0.84 1.56-1.36 2.6-1.36 0.040 0 0.080 0 0.12 0l1.96 0.28c6.84-8.4 12.12-7.040 12.36-7 0.28 0.080 0.52 0.32 0.6 0.6 0.080 0.24 1.4 5.52-7 12.36l0.28 1.96c0 0.040 0 0.080 0 0.12 0 1.040-0.48 2-1.36 2.6l-3.080 2.12c-0.28 0.16-0.56 0.28-0.88 0.28zM7.92 19.8c0.76 0.72 1.040 1.8 0.76 2.84l-0.44 1.6 2.76-1.92c0.4-0.28 0.64-0.72 0.64-1.16l-0.32-2.36c-0.040-0.28 0.080-0.6 0.32-0.76 6.4-5.080 6.92-9 6.88-10.4-0.040 0-0.040 0-0.080 0-1.48 0-5.4 0.68-10.32 6.88-0.2 0.24-0.48 0.36-0.76 0.32l-2.36-0.32c-0.48 0-0.92 0.24-1.16 0.64l-1.92 2.76 1.6-0.44c1-0.28 2.080 0 2.84 0.76l1.56 1.56zM15.76 11.12c0 0.464-0.376 0.84-0.84 0.84s-0.84-0.376-0.84-0.84c0-0.464 0.376-0.84 0.84-0.84s0.84 0.376 0.84 0.84z" />
+                    </svg><br><span>Exterior</span></label></li>
+            <li title="Cabin"><label for="tab2" role="button"><svg viewBox="0 0 24 24">
+                        <path xmlns="http://www.w3.org/2000/svg"
+                            d="M22.5 20V22C22.5 22.5523 22.0523 23 21.5 23H7.59646C6.66266 23 5.85314 22.3538 5.64619 21.4432L1.27764 2.22162C1.13542 1.59586 1.61105 1 2.25277 1H5.70799C6.17204 1 6.57512 1.31925 6.6814 1.77096L10.5 18H20.5C21.6046 18 22.5 18.8954 22.5 20Z"
+                            stroke="#71717A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path xmlns="http://www.w3.org/2000/svg"
+                            d="M6.96729 3H8.99999C9.55228 3 10 3.44772 10 4V6L8 7.5" stroke="#71717A" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path xmlns="http://www.w3.org/2000/svg" d="M13.5 14.375H9.625H7.5" stroke="#71717A"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg><br><span>Cabin</span></label></li>
+            <li title="Amenities"><label for="tab3" role="button"><svg viewBox="0 0 24 24">
+                        <path xmlns="http://www.w3.org/2000/svg"
+                            d="M4 21V18.5C4 15.4624 6.46243 13 9.5 13H13.5M8 21V18M16 6.5C16 8.70914 14.2091 10.5 12 10.5C9.79086 10.5 8 8.70914 8 6.5C8 4.29086 9.79086 2.5 12 2.5C14.2091 2.5 16 4.29086 16 6.5ZM17.5 12.9998C17.0439 12.3927 16.3178 12 15.5 12C14.1193 12 13 13.1193 13 14.5C13 15.1195 13.2253 15.6864 13.5985 16.1231L17.5 21L21.4015 16.1231C21.7747 15.6864 22 15.1195 22 14.5C22 13.1193 20.8807 12 19.5 12C18.6822 12 17.9561 12.3927 17.5 12.9998Z"
+                            stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" />
+                    </svg><br><span>Comfort</span></label></li>
+            <li title="Recovery"><label for="tab4" role="button"><svg viewBox="0 0 24 24">
+                        <path xmlns="http://www.w3.org/2000/svg"
+                            d="M23,11a1,1,0,0,1-1,1H19.659l-2.74,6.394a1.015,1.015,0,0,1-.982.6,1,1,0,0,1-.9-.724L12.064,7.865,8.97,20.242A1,1,0,0,1,8.057,21L8,21a1,1,0,0,1-.937-.648L4.307,13H2a1,1,0,0,1,0-2H5a1,1,0,0,1,.937.648l1.872,4.994L11.03,3.758a1,1,0,0,1,1.931-.032l3.228,11.3,1.892-4.415A1,1,0,0,1,19,10h3A1,1,0,0,1,23,11Z" />
+                    </svg><br><span>Technologies</span></label></li>
+        </ul>
+
+        <div class="slider">
+            <div class="indicator"></div>
+        </div>
+        <div class="content">
+            <section>
+                <div class="nausica-container">
+                    <div class="flex-child">
+                        <div class="container">
+                            <img src="{% static 'odyssey/assets/nausica3.jpg' %}">
+                        </div>
+                    </div>
+                    <div class="flex-child">
+                        <div class="container">
+                            <h2>Nausica's Exterior</h2>
+                            <p>The outer layer of the Nausica is
+                                reinforced with the latest heat shield technology to protect you from the intense heat
+                                of
+                                spaceflight.
+                                Worry not, we guarantee that you will not break a single sweat during your journey.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="nausica-container">
+                    <div class="flex-child">
+                        <div class="container">
+                            <img src="{% static 'odyssey/assets/nausicaInterior2.jpg' %}">
+                        </div>
+                    </div>
+                    <div class="flex-child">
+                        <div class="container">
+                            <h2>The Cabin</h2>
+                            <p>You will feel right at
+                                home in our cockpit, courtesy of our minimalistic styling and expansive layout. The
+                                Nausica
+                                was
+                                designed with the latest technologies to ensure your safety and comfort in your odyssey
+                                to
+                                space.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="nausica-container">
+                    <div class="flex-child">
+                        <div class="container">
+                            <img src="{% static 'odyssey/assets/nausicaInterior.jpeg' %}">
+                        </div>
+                    </div>
+                    <div class="flex-child">
+                        <div class="container">
+                            <h2>Your Comfort</h2>
+                            The Nausica's seats were built with memory foam to ensure maximum comfort during space
+                            flight.
+                            We have employed world-class ergonomists to ensure the absolute best seating position.
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="nausica-container">
+                    <div class="flex-child">
+                        <div class="container">
+                            <img src="{% static 'odyssey/assets/nausicaTech.jpg' %}">
+                        </div>
+                    </div>
+                    <div class="flex-child">
+                        <div class="container">
+                            <h2>Our Technologies</h2>
+                            In addition to our comfortable seats, we provide your helmets with crisp microphones and
+                            speakers to
+                            assure constant communication between you, your crewmates, and the ground crew.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+
+<h3 class="subheading fadeIn"><b>03 | Launch and Recovery</b></h3>
+<div class="underline fadeIn"></div>
+
+<br>
+<br>
+
+<div class="training">
+    <div class="trainingWords fadeIn">
+        <br>
+        <h4>BUILT WITH</h4>
+        <h3><b>YOU IN MIND</b></h4>
+            <p>Odyssey's top engineers are there to walk you towards the Nausica and ensure that all systems are good
+                for launch. Our propellants are built with only the best materials and top-quality fuel to ensure a
+                smooth journey and release.</p>
+    </div>
+
+    <img src="{% static 'odyssey/assets/launch3.jpg' %}" width="100%" class="fadeIn">
+</div>
+
+<div class="training">
+
+    <img src="{% static 'odyssey/assets/recovery5.jpg' %}" width="100%" class="fadeIn">
+
+    <div class="trainingWords fadeIn">
+        <br>
+        <h4>WELCOME</h4>
+        <h3><b>BACK HOME</b></h4>
+            <p>After you've finished your odyssey in space, the Nausica will end off your adventure with a splash in the
+                Pacific Ocean. Our
+                capsules are made with durable heat shields that protects its interior from the intense temperatures of
+                re-entry. Thanks to our cutting-edge navigation systems, our recovery crew can quickly track the
+                spacecraft's location and bring you home safely.
+            </p>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<h4 class="subheadingCenter centeredText fadeIn">FREQUENTLY ASKED QUESTIONS</h4>
+<div class="underlineSmall fadeIn"></div>
+
+<br>
+<br>
+
+<div class="container fadeIn">
+    <div class="row">
+        <div class="col-lg-9 mx-auto">
+            <!-- Accordion -->
+            <div id="accordionExample" class="accordion">
+
+                <!-- Accordion item 1 -->
+                <div class="card">
+                    <div id="headingOne" class="card-header bg-dark shadow-sm border-0">
+                        <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne"
+                                class="d-block position-relative text-light text-uppercase collapsible-link py-2">Are
+                                there any payment plans available for me to choose from?</a></h6>
+                    </div>
+                    <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample"
+                        class="collapse show">
+                        <div class="card-body p-5">
+                            <p class="font-weight-light m-0">Of course! You can select your payment plan on the checkout
+                                page as you book your tour.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion item 2 -->
+                <div class="card">
+                    <div id="headingTwo" class="card-header bg-dark shadow-sm border-0">
+                        <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-expanded="false" aria-controls="collapseTwo"
+                                class="d-block position-relative collapsed text-light text-uppercase collapsible-link py-2">Can
+                                I go on more than 1 tour at the same time?</a></h6>
+                    </div>
+                    <div id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample" class="collapse">
+                        <div class="card-body p-5">
+                            <p class="font-weight-light m-0">Odyssey offers an all-inclusive deluxe tour package that
+                                covers all three of our tours.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion item 3 -->
+                <div class="card">
+                    <div id="headingThree" class="card-header bg-dark shadow-sm border-0">
+                        <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse"
+                                data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
+                                class="d-block position-relative collapsed text-light text-uppercase collapsible-link py-2">Are
+                                children allowed to go on a tour?</a></h6>
+                    </div>
+                    <div id="collapseThree" aria-labelledby="headingThree" data-parent="#accordionExample"
+                        class="collapse">
+                        <div class="card-body p-5">
+                            <p class="font-weight-light m-0">Due to the rigor of spaceflight, we are limiting our tours
+                                to adults 18 years and older.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<p class="centeredText text fadeIn">Feel free to <a href="{% url 'contact us' %}">contact us</a> if you have any other
+    questions.</p>
+
+
 <br>
 <br>
 
 <div class="training">
 
-    <div class="trainingWords">
-        <h4>AND TAKE A STEP TOWARDS</h4>
+    <div class="trainingWords fadeIn">
+        <br>
+        <br>
+        <h4>TAKE A STEP TOWARDS</h4>
         <h3><b>YOUR DREAMS</b></h4>
-            <p>To ensure your health and safety, Odyssey will train your mind and body for the
-                rigor
-                of
-                spaceflight. Regardless of what odyssey you chose, you will spend a month in one of our facilities to
-                familiarize
-                yourself with the Nausica and your very own spacecrew.
-            </p>
-            <p><a href="{% url 'safety' %}">Learn more.</a></p>
+            <p><a href="{% url 'safety' %}">Book a tour now.</a></p>
     </div>
 
-    <img src="{% static 'odyssey/assets/nausicaAstronauts.jpg' %}">
+    <img src="{% static 'odyssey/assets/nausicaAstronauts.jpg' %}" class="fadeIn">
 
 </div>
 
 <br>
 <br>
-<br>
-
 
 {% endblock %}

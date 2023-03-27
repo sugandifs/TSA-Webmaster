@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="icon" href="{% static 'odyssey/assets/odysseyLogo16.png' %}">
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -24,62 +25,248 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-    <script src="{% static 'odyssey/script.js'%}"></script>
 
     <link type="text/css" href="{% static 'odyssey/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'odyssey/script.js'%}"></script>
 
-    <script>window.onscroll = function () { scrollFunction() };</script>
-
-    <!--navbar-->
     <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark shadow-5-strong">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'index' %}">
-                <img src="{% static 'odyssey/assets/odysseyLogo.png' %}" width="135" height="60" alt="">
+                <img src="{% static 'odyssey/assets/odysseyLogo16.png' %}" class="logo" alt="">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-toggle"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'index' %}">HOME</a>
+            <div class="collapse navbar-collapse justify-content-left navbar-toggle" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'index' %}">Home</a>
                     </li>
-                    <!--<li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            OUR PROGRAM
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'index' %}#safety">Your Safety</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'register' %}">
+                            Book a Tour
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">ORBITAL TOUR</a>
-                            <a class="dropdown-item" href="#">ISS TOUR</a>
-                            <a class="dropdown-item" href="#">MOON TOUR</a>
-                        </div>
-                    </li>-->
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'index' %}#program">OUR PROGRAM</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'safety' %}">YOUR SAFETY</a>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'contact us' %}">Contact Us</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'register' %}">BOOK A TOUR</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'contact us' %}">CONTACT US</a>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'admin:index' %}">Admin</a>
                     </li>
                     <li class="nav-item text-muted">
-                        <a class="nav-link" href="{% url 'sources' %}">TSA DOCUMENTATION</a>
+                        <a class="nav-link" href="{% url 'sources' %}">About</a>
                     </li>
                 </ul>
             </div>
-        </div>
+
+            <div class="collapse navbar-collapse justify-content-end navbar-toggle" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        {% if not user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'registration' %}">Login</a>
+                        {% else %}
+                        <a class="nav-link" href="{% url 'log_out' %}">Logout</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
     </nav>
+
+
 </head>
 
-<body>
+<body data-spy="scroll" data-target="#navbar" data-offset="0">
+    <div class="load-bg">
+        <div class="load"></div>
+    </div>
+    <div id="blur-back"></div>
     <!--start website (inherited to other webpages) -->
+    <!--inserting login popup that is insiviible, only loadable when js file is loaded up-->
+    {% if not user.is_authenticated %}
+    <script>
+        function toggleStage() {
+            const stageTwo = document.getElementById("create-stage-two");
+            const contBut = document.getElementById("continue-button");
+            const stageOne = document.getElementById("create-stage-one");
+            if (stageTwo.style.visibility != "visible") {
+                stageTwo.style.visibility = "visible";
+                contBut.style.display = "none";
+                stageTwo.style.height = "auto";
+                stageOne.style.height = "0px";
+                stageOne.style.visibility = "hidden";
+            }
+            else {
+                stageTwo.style.visibility = "hidden";
+                contBut.style.display = "block";
+                stageTwo.style.height = "0px";
+                stageOne.style.height = "auto";
+                stageOne.style.visibility = "visible";
+            }
+        }
+    </script>
+
+    <form id="create-acc-form">
+        {% csrf_token %}
+        <h2>Create Account</h2>
+        <div class="underlineSmallLeft"></div>
+        <br>
+        <button class="exit-form-button btn btn-secondary" onclick="hideCreate()">&#10005;</button>
+        <div id="create-stage-one">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group"><label for="create-email">Email Address</label>
+                        <input class="form-control" type="text" id="create-email" name="create-email" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="create-user-first-name">Legal First Name</label>
+                        <input class="form-control" type="text" id="create-user-first-name"
+                            name="create-user-first-name" required>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="create-user-last-name">Legal Last Name</label>
+                        <input class="form-control" type="text" id="create-user-last-name" name="create-user-last-name"
+                            required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="create-username">Username</label>
+                        <input class="form-control" type="text" id="create-username" name="create-username" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="create-password">Password</label>
+                        <input class="form-control" type="password" id="create-password" name="create-password"
+                            required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <button id="continue-button" class="btn btn-primary" onclick="toggleStage()">Continue</button>
+                </div>
+            </div>
+        </div>
+        <div id="create-stage-two">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="create-user-residential-address">Residential Address</label>
+                        <input class="form-control" type="text" id="create-user-residential-address"
+                            name="create-user-residential-address" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group"><label for="create-user-birthday">Birthday</label>
+                        <input class="form-control" type="text" id="create-user-birthday" name="create-user-birthday"
+                            required>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group"><label for="create-user-social-security">Social Security (SSN)</label>
+                        <input class="form-control" type="password" id="create-user-social-security"
+                            name="create-user-social-security" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="create-user-security-answer">Security Question:<br>What was your childhood
+                            name?</label>
+                        <input class="form-control" type="text" id="create-user-security-answer"
+                            name="create-user-security-answer" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <button class="btn btn-secondary" id="back-btn" onclick="toggleStage()">Back</button>
+                    <button class="btn btn-primary" id="create-btn" type="button" onclick="submitCreate()">Create
+                        Account</button>
+                </div>
+            </div>
+
+        </div>
+        <div id="create-status" class="alert"></div>
+    </form>
+    <form id="login-form" class="form-holder">
+        <button class="exit-form-button btn btn-secondary" onclick="toggleLoginOff()">&#10005;</button>
+        {% csrf_token %}
+        <h2>Log In</h2>
+        <div class="underlineSmallLeft"></div>
+        <br>
+        <label for="username">Username:</label>
+        <input class="form-control" type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input class="form-control" type="password" id="password" name="password" required>
+        <button class="btn btn-primary login-btn" type="button" onclick="submitLogin()">Log In</button>
+        <p>Or <a onclick="showCreate()">create an account.</a></p>
+        <div id="login-status" class="alert"></div>
+    </form>
+    <script>
+        function showCreate() {
+            document.getElementById("blur-back").style.display = "block";
+            document.getElementById("create-acc-form").style.display = "block";
+            document.getElementById("login-form").style.display = "none";
+        }
+
+        function hideCreate() {
+            if (document.getElementById("blur-back").style.display != "none" && document.getElementById("login-form").style.display != "block") {
+                document.getElementById("blur-back").style.display = "none";
+            }
+            document.getElementById("create-acc-form").style.display = "none";
+            document.getElementById("login-form").style.display = "block";
+            document.getElementById("blur-back").style.display = "block";
+        }
+    </script>
+    {% endif %}
+    <!--chat bot widget-->
+    <button id="chat-toggle"><img src="{% static 'odyssey/assets/support.png' %}"></button>
+    <div id="chat-container" class="chat-container">
+        <div style="cursor:grab;" id="chat-header" class="chat-header">
+            <div id="chat-header-status">Chat with us</div>
+            <div id="close-chat">&#10005</div>
+        </div>
+        <div id="chat-body" class="chat-body">
+            Welcome to customer support! Try messages like:
+            <a onclick="autoFill('about')">"about"</a>,
+            <a onclick="autoFill('info')">"info"</a>, or if you need more help, you can ask for a
+            <a onclick="autoFill('human representative')">human representative.</a><br><br>
+        </div>
+        <div class="chat-footer">
+            <input id="chatMessage" type="text" placeholder="Type your message here" />
+        </div>
+    </div>
+    <script src="{% static 'odyssey/chatbot.js' %}"></script>
+    <script>
+        //scroll function
+        window.onscroll = function () { scrollFunction(), navbarScroll(), fadeIn() };
+        // toggle button for the chatbot
+        var chatButton = document.getElementById("chat-toggle");
+        var closeChat = document.getElementById("close-chat");
+        chatButton.onclick = function () { toggleChat() }
+        closeChat.onclick = function () { toggleChat() }
+    </script>
+    <!--navbar-->
     <div class="body">
         {% block body %}
         {% endblock %}
@@ -90,18 +277,10 @@
 <footer>
     <div class="container py-5">
         <div class="row py-4">
-            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="img/logo.png" alt="" width="180" class="mb-3">
-                <p class="font-italic text-muted">We, the Webmaster team from Chapter 1717, affirm that all the
-                    templates and
-                    themes that are used on this website are built on our own.</p>
-                <ul class="list-inline mt-4">
-                    <li class="list-inline-item"><a href="#" target="_blank" title="twitter"><i
-                                class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" target="_blank" title="facebook"><i
-                                class="fa fa-facebook"></i></a></li>
-                    <li class="list-inline-item"><a href="#" target="_blank" title="instagram"><i
-                                class="fa fa-instagram"></i></a></li>
-                </ul>
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="{% static 'odyssey/assets/odysseyLogo13FULL.png' %}"
+                    alt="" width="180" class="mb-3">
+                <!--<p class="font-italic text-muted centeredText">Where dreams meet reality.</p>-->
+
             </div>
             <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
                 <h6 class="text-uppercase font-weight-bold mb-4"></h6>
@@ -115,9 +294,9 @@
             <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
                 <h6 class="text-uppercase font-weight-bold mb-4">odyssey</h6>
                 <ul class="list-unstyled mb-0">
-                    <li class="mb-2"><a href="#program" class="text-muted">Our Program</a></li>
-                    <li class="mb-2"><a href="{% url 'safety' %}" class="text-muted">Your Safety</a></li>
-                    <li class="mb-2"><a href="{% url 'register' %}" class="text-muted">Book a Tour</a></li>
+                    <li class="mb-2"><a href="{% url 'index' %}#home" class="text-muted">Our Program</a></li>
+                    <li class="mb-2"><a href="{% url 'index' %}#safety" class="text-muted">Your Safety</a></li>
+                    <li class="mb-2"><a href="{% url 'index' %}#booking" class="text-muted">Book a Tour</a></li>
                     <li class="mb-2"><a href="{% url 'contact us' %}" class="text-muted">Contact Us</a></li>
                 </ul>
             </div>
@@ -125,14 +304,13 @@
                 <h6 class="text-uppercase font-weight-bold mb-4">Newsletter</h6>
                 <p class="text-muted mb-4">Still unsure about your trip? No worries! Sign up for our newsletter and
                     receive monthly updates about our space program.</p>
-                <div class="p-1 rounded border">
-                    <div class="input-group">
-                        <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1"
-                            class="form-control border-0 shadow-0">
-                        <div class="input-group-append">
-                            <button id="button-addon1" type="submit" class="btn btn-link"><i
-                                    class="fa fa-paper-plane"></i></button>
-                        </div>
+
+                <div class="input-group">
+                    <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1"
+                        class="form-control border-0 shadow-0">
+                    <div class="input-group-append">
+                        <button id="button-addon1" type="submit" class="btn btn-link border-light"><i
+                                class="fa fa-paper-plane"></i></button>
                     </div>
                 </div>
             </div>

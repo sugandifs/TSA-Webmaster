@@ -29,7 +29,7 @@ DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ['*']
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:    
+if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
@@ -80,18 +80,20 @@ WSGI_APPLICATION = 'webmaster.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-'''DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}'''
+}
+"""
 DATABASES = {
-    'default': dj_database_url.config(# Feel free to alter this value to suit your needs.        
+    'default': dj_database_url.config(  # Feel free to alter this value to suit your needs.
         default='postgresql://postgres:postgres@localhost:5432/webmaster',
-        conn_max_age=600    
-    )}
-
+        conn_max_age=600
+    )
+}
+"""
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 

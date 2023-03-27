@@ -1,4 +1,4 @@
-pip install -r webmaster/requirements.txt
+pip install -r requirements.txt
 pip install gunicorn
-python webmaster/manage.py collectstatic --no-input
-python webmaster/manage.py migrate
+python manage.py collectstatic --no-input
+python manage.py migrate

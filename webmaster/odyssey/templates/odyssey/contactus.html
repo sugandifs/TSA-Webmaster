@@ -3,7 +3,7 @@
 {% block body %}
 {% load static %}
 
-<div class="parallaxSafety">
+<div class="parallaxOrder">
 </div>
 
 <br>
@@ -11,30 +11,87 @@
 
 <h4 class="headingOrange"><b>CONTACT <span class="orange">US</span></b></h4>
 
-<form>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-    </div>
+{% if user.is_authenticated %}
+<div class="contactus-container">
+    <form>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Subject</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                        placeholder="Adding another person to my trip">
+                </div>
 
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Subject</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1"
-            placeholder="Adding another person to my trip">
-    </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Please elaborate on your question</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <br>
+                <br>
+                <div class="form-btn centeredText">
+                    <button class="send-btn">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">Please elaborate on your question</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-</form>
+{% else %}
 
-<a class="btn btn-primary align" href="#" id="book">Send</a>
+<div class="contactus-container">
+    <form>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">First Name</label>
+                            <input type="firstName" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="John">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Last Name</label>
+                            <input type="firstName" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Doe">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Email address</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                        placeholder="johndoe@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Subject</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                        placeholder="Adding another person to my trip">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Please elaborate on your question</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <br>
+                <br>
+                <div class="form-btn centeredText">
+                    <button class="send-btn">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endif %}
+
 
 <br>
 <br>
-
-
 
 
 {% endblock %}
