@@ -1,0 +1,189 @@
+{% extends 'odyssey/layout.html' %}
+{% load static %}
+{% block body %}
+
+<div class="parallaxOrder">
+</div>
+
+<br>
+<br>
+
+<h4 class = "headingOrange"><b>Frequently <span class = "orange">Asked Questions</span></b></h4>
+
+<div class = "container">
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-4 my-4">
+            <input id="searchBar" type="text" class="form-control custom-search-input" placeholder="Find Keyphrases..."  aria-label="Search FAQ"style="outline: none;"onkeyup="searchFAQ()">
+        </div>
+    </div>
+    <div class = "row justify-content-between">
+        <div class = "card col col-12 col-md-6 my-3">
+            <div class = "card-body">
+                <h5 class = "card-title">Why is there a surcharge of $10,000 for the orbital tour?</h5>
+                <h6 class = "card-subtitle text-muted">Payments</h6><br>
+                <p class = "card-text">The surcharge of $10,000 is applied to cover the additional costs associated with providing an orbital tour experience. Unlike regular space tourism flights, which operate at suborbital altitudes, an orbital tour takes you into Earth's orbit, allowing you to experience weightlessness and witness the curvature of our planet from space. The technology, resources, and infrastructure required for such a mission are significantly more complex and expensive, hence the surcharge is necessary to cover these extraordinary expenses.</p>
+            </div>
+        </div>
+        <div class = "card col col-12 col-md-5 my-3 bg-warning">
+            <div class = "card-body">
+                <h5 class = "card-title">When do I need to pay the surcharge?</h5>
+                <h6 class = "card-subtitle text-muted">Payments</h6><br>
+                <p class = "card-text">The surcharge of $10,000 is due after you have successfully redeemed your tickets and confirmed your reservation for the orbital tour. At the time of booking, you will be required to pay the base cost of the tour, and the surcharge amount will be invoiced separately to ensure clarity and transparency in the payment process.</p>
+            </div>
+        </div>
+    </div>
+    <div class = "row justify-content-between">
+        <div class = "card col col-12 col-md-6 my-3">
+            <div class = "card-body">
+                <h5 class = "card-title">Can I pay the surcharge in installments?</h5>
+                <h6 class = "card-subtitle text-muted">Payments</h6><br>
+                <p class = "card-text">We understand that the surcharge amount is substantial, and we want to make it feasible for our customers. As such, we offer the option to pay the surcharge in installments, provided that the full amount is paid before the departure date of your orbital tour. Our team will be happy to discuss a payment plan that suits your needs and ensures a smooth payment process.
+                </p>
+            </div>
+        </div>
+        <div class = "card col col-12 col-md-5 my-3 bg-warning">
+            <div class = "card-body">
+                <h5 class = "card-title">What does the surcharge cover?</h5>
+                <h6 class = "card-subtitle text-muted">Payments</h6><br>
+                <p class = "card-text">The surcharge covers various additional expenses associated with an orbital tour, including advanced life support systems, extended duration in space, specialized training for the crew, enhanced safety measures, and the intricate engineering required for orbital maneuvers. These aspects contribute to the overall complexity and uniqueness of the orbital tour experience.</p>
+            </div>
+        </div>
+    </div>
+    <div class = "row justify-content-between">
+        <div class = "card col col-12 col-md-6 my-3">
+            <div class = "card-body">
+                <h5 class = "card-title">Can I go on more than one tour at the same time?</h5>
+                <h6 class = "card-subtitle text-muted">Tours</h6><br>
+                <p class = "card-text">Unfortunately, it is not possible to go on more than one orbital tour at the same time. Each orbital tour is meticulously planned and scheduled to ensure the safety and enjoyment of all participants. The complexities involved in orchestrating an orbital tour require careful coordination of resources, crew, and spacecraft availability. Therefore, it is not feasible to accommodate multiple tours simultaneously for a single individual.
+<br>    However, if you are interested in experiencing multiple orbital tours, you can certainly book additional tours on separate occasions, subject to availability. Each tour offers a unique perspective and set of experiences, allowing you to further explore the wonders of space and gain a deeper understanding of our universe.</p>
+            </div>
+        </div>
+        <div class = "card col col-12 col-md-5 my-3 bg-warning">
+            <div class = "card-body">
+                <h5 class = "card-title">Are there any age restrictions for participating in an orbital tour?</h5>
+                <h6 class = "card-subtitle text-muted">Tours</h6><br>
+                <p class = "card-text">Yes, there are age restrictions for participating in an orbital tour. Due to the physical and physiological demands of space travel, participants must meet certain age criteria to ensure their safety and well-being during the tour. The minimum age requirement for an orbital tour is typically set at 18 years old. This age restriction helps to ensure that participants have reached a level of physical maturity that can better withstand the unique conditions of space travel.
+<br>Additionally, there may be an upper age limit, usually set at around 70 years old, to account for potential health considerations and the overall fitness required for the journey. However, the specific age restrictions may vary depending on the space tourism provider and the requirements set by the regulatory authorities.</p>
+            </div>
+        </div>
+    </div>
+    <div class = "row justify-content-between">
+        <div class = "card col col-12 col-md-6 my-3">
+            <div class = "card-body">
+                <h5 class = "card-title">How do I book an orbital tour?</h5>
+                <h6 class = "card-subtitle text-muted">Booking Information</h6><br>
+                <p class = "card-text">To book an orbital tour, please visit our website and navigate to the "Book Now" section. Follow the instructions provided to select your desired tour date, provide necessary personal information, and make the required payment.</p>
+            </div>
+        </div>
+        <div class = "card col col-12 col-md-5 my-3 bg-primary">
+            <div class = "card-body">
+                <h5 class = "card-title">What is the duration of an orbital tour?</h5>
+                <h6 class = "card-subtitle text-muted">Tour Duration</h6><br>
+                <p class = "card-text">The duration of an orbital tour can vary depending on the specific tour package. Generally, an orbital tour lasts anywhere from a few days to a couple of weeks, including the time spent in space and necessary preparations before and after the journey.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class = "row justify-content-between">
+        <div class = "card col col-12 col-md-6 my-3">
+            <div class = "card-body">
+                <h5 class = "card-title">What are the physical requirements for an orbital tour?</h5>
+                <h6 class = "card-subtitle text-muted">Physical Fitness</h6><br>
+                <p class = "card-text">Participating in an orbital tour requires a certain level of physical fitness. Prior to the tour, participants are required to undergo thorough medical evaluations and fitness assessments to ensure their ability to withstand the physical demands of space travel.</p>
+            </div>
+        </div>
+        <div class = "card col col-12 col-md-5 my-3 bg-primary">
+            <div class = "card-body">
+                <h5 class = "card-title">What safety measures are in place during an orbital tour?</h5>
+                <h6 class = "card-subtitle text-muted">Safety Precautions</h6><br>
+                <p class = "card-text">Safety is of utmost importance during an orbital tour. Stringent safety protocols are followed, including comprehensive training for the crew, advanced life support systems, emergency procedures, and thorough spacecraft inspections to ensure a secure and enjoyable journey.</p>
+            </div>
+        </div>
+    </div>
+    <div class = "row justify-content-between">
+        <div class = "card col col-12 col-md-6 my-3">
+            <div class = "card-body">
+                <h5 class = "card-title">What is the weightlessness experience like during an orbital tour?</h5>
+                <h6 class = "card-subtitle text-muted">Weightlessness Experience</h6><br>
+                <p class = "card-text">During an orbital tour, you will experience the incredible sensation of weightlessness. In the absence of gravity, you will float freely inside the spacecraft, allowing you to move and navigate without the usual constraints of Earth's gravity.</p>
+            </div>
+        </div>
+        <div class = "card col col-12 col-md-5 my-3 bg-info">
+            <div class = "card-body">
+                <h5 class = "card-title">What kind of training do participants receive before an orbital tour?</h5>
+                <h6 class = "card-subtitle text-muted">Pre-Tour Training</h6><br>
+                <p class = "card-text">Participants undergo comprehensive training before an orbital tour. This includes classroom sessions, simulations, physical exercises, and familiarization with spacecraft systems to ensure that they are well-prepared for the unique challenges and experiences of space travel.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class = "row justify-content-between">
+        <div class = "card col col-12 col-md-6 my-3">
+            <div class = "card-body">
+                <h5 class = "card-title">Can I bring personal belongings on an orbital tour?</h5>
+                <h6 class = "card-subtitle text-muted">Personal Belongings</h6><br>
+                <p class = "card-text">While there are limitations on the size and weight of personal belongings you can bring on an orbital tour, you are typically allowed to bring essential items such as clothing, toiletries, and personal mementos. However, it's important to follow the guidelines provided by the space tourism provider to ensure safety and compliance with spaceflight regulations.</p>
+            </div>
+        </div>
+        <div class = "card col col-12 col-md-5 my-3 bg-info">
+            <div class = "card-body">
+                <h5 class = "card-title">Are there any specific health requirements for participating in an orbital tour?</h5>
+                <h6 class = "card-subtitle text-muted">Health Requirements</h6><br>
+                <p class = "card-text">Participants in an orbital tour are generally required to be in good health. Pre-existing medical conditions and certain health factors may affect your eligibility for the tour. It is important to consult with the space tourism provider and undergo medical evaluations to ensure that you meet the necessary health requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class = "row justify-content-between">
+        <div class = "card col col-12 col-md-6 my-3">
+            <div class = "card-body">
+                <h5 class = "card-title">What is the best time of year to go on an orbital tour?</h5>
+                <h6 class = "card-subtitle text-muted">Ideal Tour Timing</h6><br>
+                <p class = "card-text">The best time of year for an orbital tour can vary depending on various factors, including weather conditions, celestial events, and space mission schedules. It is recommended to consult with the space tourism provider or check their website for information on the optimal timing for your desired orbital tour experience.</p>
+            </div>
+        </div>
+        <div class = "card col col-12 col-md-5 my-3 bg-info">
+            <div class = "card-body">
+                <h5 class = "card-title">How do I prepare for the physical demands of an orbital tour?</h5>
+                <h6 class = "card-subtitle text-muted">Physical Preparation</h6><br>
+                <p class = "card-text">Preparing for the physical demands of an orbital tour requires regular exercise, strength training, and maintaining a healthy lifestyle. It is advisable to consult with a healthcare professional or a qualified fitness trainer who can provide guidance on specific exercises and preparations to ensure you are physically ready for the journey.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class = "row justify-content-between">
+        <div class = "card col col-12 col-md-6 my-3">
+            <div class = "card-body">
+                <h5 class = "card-title">What happens if there is a medical emergency during an orbital tour?</h5>
+                <h6 class = "card-subtitle text-muted">Medical Emergencies</h6><br>
+                <p class = "card-text">Space tourism companies have stringent protocols in place to handle medical emergencies during an orbital tour. The crew is trained in first aid and emergency medical procedures, and the spacecraft is equipped with medical supplies and equipment to address potential health issues that may arise while in space.</p>
+            </div>
+        </div>
+        <div class = "card col col-12 col-md-5 my-3 bg-info">
+            <div class = "card-body">
+                <h5 class = "card-title">Can I communicate with people on Earth during an orbital tour?</h5>
+                <h6 class = "card-subtitle text-muted">Communication with Earth</h6><br>
+                <p class = "card-text">Yes, participants on an orbital tour can communicate with people on Earth. The spacecraft is equipped with communication systems that allow for real-time communication through various channels, such as voice and video calls. However, communication may be subject to certain limitations depending on the specific mission parameters and technical capabilities.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function searchFAQ() {
+        let input = document.getElementById("searchBar").value.toLowerCase();
+        let cards = document.getElementsByClassName("card");
+        
+        for (let i = 0; i < cards.length; i++) {
+            let title = cards[i].getElementsByClassName("card-title")[0].textContent.toLowerCase();
+            let subtitle = cards[i].getElementsByClassName("card-subtitle")[0].textContent.toLowerCase();
+            let text = cards[i].getElementsByClassName("card-text")[0].textContent.toLowerCase();
+            
+            if (title.includes(input) || subtitle.includes(input) || text.includes(input)) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+    </script>
+{% endblock %}

@@ -8,29 +8,52 @@
 <script src="{% static 'odyssey/login.js' %}"></script>
 <script src="{% static 'odyssey/registration.js' %}"></script>
 <div class="parallaxOrder">
-    <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24" fill="none"
-        id="downIndicator" class="fadeOut">
-        <path
-            d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.06 11.27L12.53 14.8C12.38 14.95 12.19 15.02 12 15.02C11.81 15.02 11.62 14.95 11.47 14.8L7.94 11.27C7.65 10.98 7.65 10.5 7.94 10.21C8.23 9.92 8.71 9.92 9 10.21L12 13.21L15 10.21C15.29 9.92 15.77 9.92 16.06 10.21C16.35 10.5 16.35 10.97 16.06 11.27Z"
-            fill="#fb8b24" />
-    </svg>
+    <a href="#sliding-down"><svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"
+            fill="none" id="downIndicator">
+            <path d=" M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.06
+        11.27L12.53 14.8C12.38 14.95 12.19 15.02 12 15.02C11.81 15.02 11.62 14.95 11.47 14.8L7.94 11.27C7.65 10.98 7.65
+        10.5 7.94 10.21C8.23 9.92 8.71 9.92 9 10.21L12 13.21L15 10.21C15.29 9.92 15.77 9.92 16.06 10.21C16.35 10.5 16.35
+        10.97 16.06 11.27Z" fill="#fb8b24" />
+        </svg></a>
 </div>
 
 <br>
 <br>
 
 <h4 class="headingOrange fadeIn"><b>BOOK A <span class="orange">TOUR</span></b></h4>
-<p class="centeredText text fadeIn">Spaceflight is no easy journey, and we'd like to thank you for
+<p id="sliding-down" class="centeredText text fadeIn">Spaceflight is no easy journey, and we'd like to thank you for
     choosing to fly with Odyssey.</p>
 <br>
 
-<div class="fadeIn">
+<div class="fadeIn" id="#bookTour">
     <div class="tabsTour">
         <!-- toggle the login form off whenever switching between tabs-->
+        {% if checked == 0 %}
         <input type="radio" id="tab1" name="tab-control" checked onclick="toggleLoginOff();">
         <input type="radio" id="tab2" name="tab-control" onclick="toggleLoginOff();">
         <input type="radio" id="tab3" name="tab-control" onclick="toggleLoginOff();">
         <input type="radio" id="tab4" name="tab-control" onclick="toggleLoginOff();">
+        {% elif checked == 1 %}
+        <input type="radio" id="tab1" name="tab-control" onclick="toggleLoginOff();">
+        <input type="radio" id="tab2" name="tab-control" checked onclick="toggleLoginOff();">
+        <input type="radio" id="tab3" name="tab-control" onclick="toggleLoginOff();">
+        <input type="radio" id="tab4" name="tab-control" onclick="toggleLoginOff();">
+        {% elif checked == 2 %}
+        <input type="radio" id="tab1" name="tab-control" onclick="toggleLoginOff();">
+        <input type="radio" id="tab2" name="tab-control" onclick="toggleLoginOff();">
+        <input type="radio" id="tab3" name="tab-control" checked onclick="toggleLoginOff();">
+        <input type="radio" id="tab4" name="tab-control" onclick="toggleLoginOff();">
+        {% elif checked == 3 %}
+        <input type="radio" id="tab1" name="tab-control" checked onclick="toggleLoginOff();">
+        <input type="radio" id="tab2" name="tab-control" onclick="toggleLoginOff();">
+        <input type="radio" id="tab3" name="tab-control" onclick="toggleLoginOff();">
+        <input type="radio" id="tab4" name="tab-control" checked onclick="toggleLoginOff();">
+        {% else %}
+        <input type="radio" id="tab1" name="tab-control" checked onclick="toggleLoginOff();">
+        <input type="radio" id="tab2" name="tab-control" onclick="toggleLoginOff();">
+        <input type="radio" id="tab3" name="tab-control" onclick="toggleLoginOff();">
+        <input type="radio" id="tab4" name="tab-control" onclick="toggleLoginOff();">
+        {% endif %}
         <ul class="bookingTitles">
             <li title="Orbital Tour"><label for="tab1" role="button"><svg viewBox="0 0 24 24">
                         <path xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +72,181 @@
                             d="M12 3C12 7.97056 16.0294 12 21 12C16.0294 12 12 16.0294 12 21C12 16.0294 7.97056 12 3 12C5.6655 12 8.06036 10.8412 9.70832 9" />
                     </svg><br><span> Deluxe Tour</span></label></li>
         </ul>
+        <form id="orderForm">
+            {% csrf_token %}
+            <div id="payment-form-popup" style = "display:none;"class="payment-form-popup">
+                <input id="Individual-Value" value="Orbital Space Tour" name="tourChoice" style="display:none;" />
+                <input id="num-tickets" type="number" value="1" name="num_tickets" style="display:none;" />
+                <input id="tickets-date" type="date" name="tickets_date" style="display:none;" />
+                <!--change display to none-->
+                <button id="btn-close" type="button" onclick="toggleSavedToPay()">&#65343;</button>
+                <h2>Make your deposit</h2>
+                <div class="underlineSmallLeft"></div>
+                <br>
+                <p>$10,000 due today and billed completely after redeemed.</p>
+                <span class="form-label">Select Saved Payment:</span>
+                <select class="form-control" name="cardSelection">
+                    {% if payments %}
+                    {% for payment in payments %}
+                    <option value="{{payment.cardName}}">{{payment.cc_name}}</option>
+                    {% endfor %}
+                    {% endif %}
+                </select>
+                <br>
+                <a id="add-new-payment" onclick="toggleAddNewPayment()">+ Add new</a><br>
+                <br>
+                <!--<button class="btn button-loading btn-outline-light" onclick="submitPayment(), toggleSavedToPay()"
+                    data-toggle="modal" type="button" data-target="#exampleModalCenter"><span class="button-text">Lock
+                        In</span></button>-->
+                <button type="button" class="button" onclick="this.classList.toggle('button--loading'), submitPayment()"
+                    data-toggle="modal" data-target="#exampleModalCenter">
+                    <span class="button__text">Lock In</span>
+                </button>
+                <script>
+                    const btn = document.querySelector(".button");
 
+                    btn.classList.add("button--loading");
+                    btn.classList.remove("button--loading");
+                </script>
+            </div>
+        </form>
+        <form id="add-payment-form">
+            {% csrf_token %}
+            <h2>Add A New Payment</h2>
+            <div class="underlineSmallLeft"></div>
+            <br>
+            <button id="btn-close-0" type="button" onclick="toggleSavedToPay()">&#65343;</button>
+            <h4>Billing Details</h4>
+            <br>
+            <div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label" for="bfname">First Name</label>
+                            <input type="text" name="bfname" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label" for="blname">Last Name</label>
+                            <input type="text" name="blname" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="baddress">Address</label>
+                    <input type="text" name="baddress" class="form-control" />
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="form-label" for="bcity">City</label>
+                            <input type="text" name="bcity" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <span class="form-label">State</span>
+                            <select name="bstate" class="form-control">
+                                <option value="AL">AL</option>
+                                <option value="AK">AK</option>
+                                <option value="AR">AR</option>
+                                <option value="AZ">AZ</option>
+                                <option value="CA">CA</option>
+                                <option value="CO">CO</option>
+                                <option value="CT">CT</option>
+                                <option value="DC">DC</option>
+                                <option value="DE">DE</option>
+                                <option value="FL">FL</option>
+                                <option value="GA">GA</option>
+                                <option value="HI">HI</option>
+                                <option value="IA">IA</option>
+                                <option value="ID">ID</option>
+                                <option value="IL">IL</option>
+                                <option value="IN">IN</option>
+                                <option value="KS">KS</option>
+                                <option value="KY">KY</option>
+                                <option value="LA">LA</option>
+                                <option value="MA">MA</option>
+                                <option value="MD">MD</option>
+                                <option value="ME">ME</option>
+                                <option value="MI">MI</option>
+                                <option value="MN">MN</option>
+                                <option value="MO">MO</option>
+                                <option value="MS">MS</option>
+                                <option value="MT">MT</option>
+                                <option value="NC">NC</option>
+                                <option value="NE">NE</option>
+                                <option value="NH">NH</option>
+                                <option value="NJ">NJ</option>
+                                <option value="NM">NM</option>
+                                <option value="NV">NV</option>
+                                <option value="NY">NY</option>
+                                <option value="ND">ND</option>
+                                <option value="OH">OH</option>
+                                <option value="OK">OK</option>
+                                <option value="OR">OR</option>
+                                <option value="PA">PA</option>
+                                <option value="RI">RI</option>
+                                <option value="SC">SC</option>
+                                <option value="SD">SD</option>
+                                <option value="TN">TN</option>
+                                <option value="TX">TX</option>
+                                <option value="UT">UT</option>
+                                <option value="VT">VT</option>
+                                <option value="VA">VA</option>
+                                <option value="WA">WA</option>
+                                <option value="WI">WI</option>
+                                <option value="WV">WV</option>
+                                <option value="WY">WY</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label class="form-label" for="bzip">Zip</label>
+                            <input type="number" name="bzip" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <h4>Payment Information</h4>
+                <br>
+                <div class="form-group">
+                    <label class="form-label" for="cc-name">Card Nickname</label>
+                    <input type="text" name="cc-name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="paymentMethod">Select Payment Method</label>
+                    <select class="form-control" name="paymentMethod">
+                        <option value="Credit">Credit</option>
+                        <option value="Debit">Debit</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="cc-nn">Card Provider</label>
+                    <input type="text" name="cc-nn" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="cc-num">Credit Card Number</label>
+                    <input type="text" name="cc-num" class="form-control" />
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label class="form-label" for="cc-exp">Exp. Date</label>
+                            <input type="text" name="cc-exp" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label class="form-label" for="cc-cvv">CVV</label>
+                            <input type="number" name="cc-cvv" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-outline-light" onclick="addNewPayment()">+Add</button>
+        </form>
         <div class="slider">
             <div class="indicator"></div>
         </div>
@@ -150,189 +347,37 @@
                             </ul>
                             <br>
                             {% if user.is_authenticated %}
-                            <form id="orderForm">
-                                {% csrf_token %}
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <span class="form-label">Departure Date</span>
-                                            <input class="form-control" type="date" name="departDate" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="form-label" for="typeNumber">Tickets</label>
-                                            <input type="number" id="typeNumber" name="ticketCount" class="form-control"
-                                                value="1" />
-                                        </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <span class="form-label">Start Date*</span>
+                                        <input class="form-control" type="date" name="departDate"
+                                            onchange="changeDate(this);" required>
                                     </div>
                                 </div>
-                                <br>
-                                <div class="form-btn centeredText">
-                                    <button type="button" class="submit-btn" onclick="toggleSavedToPay()">Confirm and
-                                        Book
-                                        Tour</button>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="typeNumber">Tickets</label>
+                                        <input type="number" id="typeNumber" name="ticketCount" class="form-control"
+                                            value="1" onchange="changeNumTickets(this);" />
+                                    </div>
                                 </div>
-                                <!--Copy-->
-                                <div id="payment-form-popup" class="payment-form-popup">
-                                    <input value="Orbital Space Tour" name="tourChoice" style="display:none;" />
-                                    <button id="btn-close" type="button" onclick="toggleSavedToPay()">&#65343;</button>
-                                    <h2>Make your deposit</h2>
-                                    <div class="underlineSmallLeft"></div>
-                                    <br>
-                                    <p>$10,000 due today and billed completely after redeemed.</p>
-                                    <span class="form-label">Select Saved Payment:</span>
-                                    <select class="form-control" name="cardSelection">
-                                        {% if payments %}
-                                        {% for payment in payments %}
-                                        <option value="{{payment.cardName}}">{{payment.cardName}}</option>
-                                        {% endfor %}
-                                        {% endif %}
-                                    </select>
-                                    <br>
-                                    <a id="add-new-payment" onclick="toggleAddNewPayment()">+ Add new</a><br>
-                                    <br>
-                                    <button class="btn btn-outline-light" onclick="submitPayment()">Lock In</button>
-                                </div>
-                            </form>
+                            </div>
+                            <div class="row">
+                                <p class="details">*You will begin your 2-month training regime on the date you choose
+                                    above. Then, you
+                                    will officially start your tour as soon as you finish your 2-month training
+                                    regime.</p>
+                            </div>
+                            <br>
+                            <div class="form-btn centeredText">
+                                <button type="button" class="submit-btn"
+                                    onclick="toggleSavedToPay('Orbital Space Tour')">Confirm and
+                                    Book
+                                    Tour</button>
+                            </div>
+                            <!--Copy-->
 
-                            <form id="add-payment-form">
-                                {% csrf_token %}
-                                <h2>Add A New Payment</h2>
-                                <div class="underlineSmallLeft"></div>
-                                <br>
-                                <button id="btn-close-0" type="button" onclick="toggleSavedToPay()">&#65343;</button>
-                                <h4>Billing Details</h4>
-                                <br>
-                                <div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="bfname">First Name</label>
-                                                <input type="text" name="bfname" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="blname">Last Name</label>
-                                                <input type="text" name="blname" class="form-control" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="baddress">Address</label>
-                                        <input type="text" name="baddress" class="form-control" />
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <label class="form-label" for="bcity">City</label>
-                                                <input type="text" name="bcity" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <span class="form-label">State</span>
-                                                <select name="bstate" class="form-control">
-                                                    <option value="AL">AL</option>
-                                                    <option value="AK">AK</option>
-                                                    <option value="AR">AR</option>
-                                                    <option value="AZ">AZ</option>
-                                                    <option value="CA">CA</option>
-                                                    <option value="CO">CO</option>
-                                                    <option value="CT">CT</option>
-                                                    <option value="DC">DC</option>
-                                                    <option value="DE">DE</option>
-                                                    <option value="FL">FL</option>
-                                                    <option value="GA">GA</option>
-                                                    <option value="HI">HI</option>
-                                                    <option value="IA">IA</option>
-                                                    <option value="ID">ID</option>
-                                                    <option value="IL">IL</option>
-                                                    <option value="IN">IN</option>
-                                                    <option value="KS">KS</option>
-                                                    <option value="KY">KY</option>
-                                                    <option value="LA">LA</option>
-                                                    <option value="MA">MA</option>
-                                                    <option value="MD">MD</option>
-                                                    <option value="ME">ME</option>
-                                                    <option value="MI">MI</option>
-                                                    <option value="MN">MN</option>
-                                                    <option value="MO">MO</option>
-                                                    <option value="MS">MS</option>
-                                                    <option value="MT">MT</option>
-                                                    <option value="NC">NC</option>
-                                                    <option value="NE">NE</option>
-                                                    <option value="NH">NH</option>
-                                                    <option value="NJ">NJ</option>
-                                                    <option value="NM">NM</option>
-                                                    <option value="NV">NV</option>
-                                                    <option value="NY">NY</option>
-                                                    <option value="ND">ND</option>
-                                                    <option value="OH">OH</option>
-                                                    <option value="OK">OK</option>
-                                                    <option value="OR">OR</option>
-                                                    <option value="PA">PA</option>
-                                                    <option value="RI">RI</option>
-                                                    <option value="SC">SC</option>
-                                                    <option value="SD">SD</option>
-                                                    <option value="TN">TN</option>
-                                                    <option value="TX">TX</option>
-                                                    <option value="UT">UT</option>
-                                                    <option value="VT">VT</option>
-                                                    <option value="VA">VA</option>
-                                                    <option value="WA">WA</option>
-                                                    <option value="WI">WI</option>
-                                                    <option value="WV">WV</option>
-                                                    <option value="WY">WY</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <div class="form-group">
-                                                <label class="form-label" for="bzip">Zip</label>
-                                                <input type="number" name="bzip" class="form-control" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h4>Payment Information</h4>
-                                    <br>
-                                    <div class="form-group">
-                                        <label class="form-label" for="cc-nn">Card Nickname</label>
-                                        <input type="text" name="cc-nn" class="form-control" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="paymentMethod">Select Payment Method</label>
-                                        <select class="form-control" name="paymentMethod">
-                                            <option value="Credit">Credit</option>
-                                            <option value="Debit">Debit</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="cc-name">Name on Card</label>
-                                        <input type="text" name="cc-name" class="form-control" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="cc-num">Credit Card Number</label>
-                                        <input type="text" name="cc-num" class="form-control" />
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <div class="form-group">
-                                                <label class="form-label" for="cc-exp">Exp. Date</label>
-                                                <input type="text" name="cc-exp" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <div class="form-group">
-                                                <label class="form-label" for="cc-cvv">CVV</label>
-                                                <input type="number" name="cc-cvv" class="form-control" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="btn btn-outline-light" onclick="addNewPayment()">+Add</button>
-                            </form>
                             <!--End Copy-->
                             {% else %}
                             <h4 class="centeredText">Please log in to book this tour.</h4>
@@ -352,15 +397,49 @@
                     <div class="container flex-child">
                         <div class="tourHighlights">
                             <h2><b>Tour Highlights</b></h2>
-                            <p><b>01 | Lorem ipsum dolor</b></p>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos similique commodi dolor.
-                                Nemo ratione repellat adipisci ullam consequatur? Reprehenderit, labore eligendi? Autem
-                                ex exercitationem vel ab. Molestias dolore esse sequi.</p>
-                            <p><b>02 | Lorem ipsum dolor</b></p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis aspernatur maxime
-                                cum animi modi, quod illum incidunt natus corrupti veniam error vitae asperiores minus,
-                                voluptate mollitia velit molestias quia eos?</p>
+                            <p><b>01 <span class="orange">|</span> Earth Observation</b></p>
+                            <p>Take the stunning views of Earth from above and learn about the geographical features and
+                                weather patterns about our planet. If you're feeling lucky, a surprise appearance from
+                                the Northern Lights may greet you as you fly the Earth's orbit!<br>Expert guides will accompany you, providing insightful commentary about the geographical features and weather patterns that shape our planet. You'll gain a deeper understanding of the interconnectedness of Earth's ecosystems and the delicate balance that sustains life.</p>
+                            <p><b>02 <span class="orange">|</span> Lunar Flyby</b></p>
+                            <p>Take in the beauty of our nearest celestial neighbour as you fly by the Moon. Our
+                                experienced guides will immerse you in the beauty of Earth's only natural satellite,
+                                sharing fascinating facts and stories about the moon and its place in our universe.<br>As your spacecraft ventures beyond Earth's orbit, prepare for an up-close encounter with the Moon. Gazing out of the windows, you will witness the captivating beauty of Earth's only natural satellite. The Moon's rugged terrain, pockmarked with craters, mountains, and expansive plains, will unfold before your eyes.
+
+                            </p>
                         </div>
+                        <br>
+                        <!--Comment out on emergency-->
+                        <br>
+                        <div class="container flex-child">
+
+                        <div class = "row">
+                            <div class = "card bg-secondary p-4 my-3">
+                                <h2 class = "card-title">4.0 Stars</h2>
+                                <p class = "card-subtitle">23,441 Reviews so far</p>
+                            </div>
+                        </div>
+                        <div class = "row">
+                            <div class = "card p-4 col-12">
+                                <h6 class = "card-heading">
+                                    Top Review
+                                </h6>
+                                <h3 class = "card-title">
+                                    Excellent Starter Tour
+                                </h3>
+                                <h5 class = "card-subtitle">
+                                    Sarah P.
+                                </h5><br>
+                                <p class = "card-text">
+                                    <i>"The Orbital Tour was an absolutely breathtaking experience! Floating in zero gravity, witnessing Earth from space, and feeling weightless—it was truly out of this world. The team at Odyssey Space Tours provided excellent service, ensuring our safety and comfort throughout the journey. I highly recommend this once-in-a-lifetime adventure to all the space enthusiasts out there!"</i>
+                                </p>
+                                <div class = "card-footer text-light border-light">
+                                    5.0 &#9733;&#9733;&#9733;&#9733;&#9733;
+                                </div>
+                            </div>
+                        </div>
+                        <!--COMMENT-->
+                    </div>
                     </div>
                 </div>
             </section>
@@ -384,7 +463,7 @@
                                         </div>
 
                                         <div class="carousel-item">
-                                            <img src="{% static 'odyssey/assets/iss3.jpg' %}" alt="Hills">
+                                            <img src="{% static 'odyssey/assets/isscupola.jpg' %}" alt="Hills">
                                         </div>
 
                                         <div class="carousel-item">
@@ -409,7 +488,8 @@
 
                                         <li class="list-inline-item">
                                             <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel2">
-                                                <img src="{% static 'odyssey/assets/iss3.jpg' %}" class="img-fluid">
+                                                <img src="{% static 'odyssey/assets/isscupola.jpg' %}"
+                                                    class="img-fluid">
                                             </a>
                                         </li>
 
@@ -467,21 +547,31 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <span class="form-label">Departure Date</span>
-                                            <input class="form-control" type="date" required>
+                                            <span class="form-label">Start Date*</span>
+                                            <input class="form-control" type="date" onchange="changeDate(this);"
+                                                required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="form-label" for="typeNumber"># of Tickets</label>
-                                            <input type="number" id="typeNumber" class="form-control" value="1" />
+                                            <input type="number" onchange="changeNumTickets(this);" id="typeNumber"
+                                                class="form-control" value="1" />
                                         </div>
                                     </div>
 
                                 </div>
+                                <div class="row">
+                                    <p class="details">*You will begin your 2-month training regime on the date you
+                                        choose
+                                        above. Then, you
+                                        will officially start your tour as soon as you finish your 2-month training
+                                        regime.</p>
+                                </div>
                                 <br>
                                 <div class="form-btn centeredText">
-                                    <button class=" submit-btn">Confirm and Book Tour</button>
+                                    <button type="button" class=" submit-btn"
+                                        onclick="toggleSavedToPay('ISS Tour')">Confirm and Book Tour</button>
                                 </div>
                             </form>
                             {% else %}
@@ -500,15 +590,47 @@
                     <div class="container flex-child">
                         <div class="tourHighlights">
                             <h2><b>Tour Highlights</b></h2>
-                            <p><b>01 | Lorem ipsum dolor</b></p>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos similique commodi dolor.
-                                Nemo ratione repellat adipisci ullam consequatur? Reprehenderit, labore eligendi? Autem
-                                ex exercitationem vel ab. Molestias dolore esse sequi.</p>
-                            <p><b>02 | Lorem ipsum dolor</b></p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis aspernatur maxime
-                                cum animi modi, quod illum incidunt natus corrupti veniam error vitae asperiores minus,
-                                voluptate mollitia velit molestias quia eos?</p>
+                            <p><b>01 <span class="orange">|</span> The Spacewalk</b></p>
+                            <p>Experience the thrill of a spacewalk outside the station, tethered to the ISS with a
+                                safety line. Immerse yourself in the wonders of outerspace and take in the views outside
+                                the International Space Station.</p>
+                            <p><b>02 <span class="orange">|</span> Research in the Lab</b></p>
+                            <p>Spend a day or two in the station's laboratory, conducting simple scientific experiments
+                                and learning about the current research projects being conducted in the ISS.</p>
+                            <p><b>03 <span class="orange">|</span> The Cupola</b></p>
+                            <p>Take in the breathtaking views of Earth from the famous Cupola, the International Space
+                                Station's oberservation module.<br>The Cupola is a specially designed module on the International Space Station (ISS) that offers an unparalleled view of our planet. From this iconic vantage point, you will be able to witness the awe-inspiring beauty of Earth in all its glory.</p>
                         </div>
+                        <!--Comment out on emergency-->
+                        <br>
+                        <div class="container flex-child">
+                        <div class = "row">
+                            <div class = "card bg-secondary p-4 my-3">
+                                <h2 class = "card-title">4.8 Stars</h2>
+                                <p class = "card-subtitle">8,109 Reviews so far</p>
+                            </div>
+                        </div>
+                        <div class = "row">
+                            <div class = "card p-4 col-12">
+                                <h6 class = "card-heading">
+                                    Top Review
+                                </h6>
+                                <h3 class = "card-title">
+                                    Breathtaking!
+                                </h3>
+                                <h5 class = "card-subtitle">
+                                    Alex Y.
+                                </h5><br>
+                                <p class = "card-text">
+                                    <i>"The ISS Tour was a once-in-a-lifetime experience that I will cherish forever. Stepping aboard the International Space Station felt like stepping into the future. The tour allowed me to witness the incredible work being done in space exploration firsthand. The team at Odyssey Space Tours ensured that every moment was filled with wonder and excitement. Floating through the modules, observing Earth from space, and interacting with the astronauts were unforgettable moments. I highly recommend the ISS Tour to anyone with a passion for space and a desire to explore the final frontier."</i>
+                                </p>
+                                <div class = "card-footer text-light border-light">
+                                    5.0 &#9733;&#9733;&#9733;&#9733;&#9733;
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <!--COMMENT-->
                     </div>
                 </div>
             </section>
@@ -611,21 +733,30 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <span class="form-label">Departure Date</span>
-                                            <input class="form-control" type="date" required>
+                                            <span class="form-label">Start Date*</span>
+                                            <input class="form-control" type="date" onchange="changeDate(this);"
+                                                required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="form-label" for="typeNumber"># of Tickets</label>
-                                            <input type="number" id="typeNumber" class="form-control" value="1" />
+                                            <input type="number" id="typeNumber" onchange="changeNumTickets(this);"
+                                                class="form-control" value="1" />
                                         </div>
                                     </div>
-
+                                </div>
+                                <div class="row">
+                                    <p class="details">*You will begin your 2-month training regime on the date you
+                                        choose
+                                        above. Then, you
+                                        will officially start your tour as soon as you finish your 2-month training
+                                        regime.</p>
                                 </div>
                                 <br>
                                 <div class="form-btn centeredText">
-                                    <button class=" submit-btn">Confirm and Book Tour</button>
+                                    <button type="button" class=" submit-btn"
+                                        onclick="toggleSavedToPay('Moon Tour')">Confirm and Book Tour</button>
                                 </div>
                             </form>
                             {% else %}
@@ -644,15 +775,49 @@
                     <div class="container flex-child">
                         <div class="tourHighlights">
                             <h2><b>Tour Highlights</b></h2>
-                            <p><b>01 | Lorem ipsum dolor</b></p>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos similique commodi dolor.
-                                Nemo ratione repellat adipisci ullam consequatur? Reprehenderit, labore eligendi? Autem
-                                ex exercitationem vel ab. Molestias dolore esse sequi.</p>
-                            <p><b>02 | Lorem ipsum dolor</b></p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis aspernatur maxime
-                                cum animi modi, quod illum incidunt natus corrupti veniam error vitae asperiores minus,
-                                voluptate mollitia velit molestias quia eos?</p>
+                            <p><b>01 <span class="orange">|</span> Lunar Excursion</b></p>
+                            <p>Explore the rugged terrain of the Moon on a moon buggy ride. Visit the Moon's famous
+                                craters and landscapes up close alongside our expert guides who will provide you
+                                information about the Moon's geology and history.</p>
+                            <p><b>02 <span class="orange">|</span> The Moonwalk</b></p>
+                            <p>Put on your custom Odyssey spacesuit and take a guided walk on the surface of the moon,
+                                experiencing what it's like to move and work in the low-gravity environment of space.
+                            </p>
+                            <p><b>03 <span class="orange">|</span> Scenic Flight</b></p>
+                            <p>Board the Nausica for a lunar scenic flight on the way home and take in breathtaking
+                                views of the Moon from above. You'll get a chance to view the Moon's dark side and far
+                                side, both of which are never visible from Earth.</p>
                         </div>
+                        <!--Comment out on emergency-->
+                        <br>
+                        <div class="container flex-child">
+                        <div class = "row">
+                            <div class = "card bg-secondary p-4 my-3">
+                                <h2 class = "card-title">4.7 Stars</h2>
+                                <p class = "card-subtitle">5,122 Reviews so far</p>
+                            </div>
+                        </div>
+                        <div class = "row">
+                            <div class = "card p-4 col-12">
+                                <h6 class = "card-heading">
+                                    Top Review
+                                </h6>
+                                <h3 class = "card-title">
+                                    They've done it again
+                                </h3>
+                                <h5 class = "card-subtitle">
+                                    Emily H.
+                                </h5><br>
+                                <p class = "card-text">
+                                    <i>"The Moon Tour exceeded all my expectations and took me on a journey beyond imagination. From the moment we boarded the spacecraft, the sense of anticipation and wonder was palpable. The skilled and knowledgeable guides from Odyssey Space Tours provided insightful commentary throughout the journey, sharing fascinating facts about the moon and its history. As we approached the lunar surface, the sight of the desolate yet awe-inspiring landscape left me speechless. Stepping foot on the moon was a surreal experience, and I couldn't help but feel a profound connection to humanity's exploratory spirit. The Moon Tour is an absolute must for anyone who dreams of venturing into space and witnessing the beauty of our celestial neighbor."</i>
+                                </p>
+                                <div class = "card-footer text-light border-light">
+                                    5.0 &#9733;&#9733;&#9733;&#9733;&#9733;
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <!--COMMENT-->
                     </div>
                 </div>
             </section>
@@ -759,21 +924,30 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <span class="form-label">Departure Date</span>
-                                            <input class="form-control" type="date" required>
+                                            <span class="form-label">Start Date*</span>
+                                            <input class="form-control" type="date" onchange="changeDate(this);"
+                                                required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="form-label" for="typeNumber"># of Tickets</label>
-                                            <input type="number" id="typeNumber" class="form-control" value="1" />
+                                            <input type="number" id="typeNumber" onchange="changeNumTickets(this);"
+                                                class="form-control" value="1" />
                                         </div>
                                     </div>
-
+                                </div>
+                                <div class="row">
+                                    <p class="details">*You will begin your 2-month training regime on the date you
+                                        choose
+                                        above. Then, you
+                                        will officially start your tour as soon as you finish your 2-month training
+                                        regime.</p>
                                 </div>
                                 <br>
                                 <div class="form-btn centeredText">
-                                    <button class=" submit-btn">Confirm and Book Tour</button>
+                                    <button type="button" class=" submit-btn"
+                                        onclick="toggleSavedToPay('Deluxe Tour')">Confirm and Book Tour</button>
                                 </div>
                             </form>
                             {% else %}
@@ -792,15 +966,48 @@
                     <div class="container flex-child">
                         <div class="tourHighlights">
                             <h2><b>Tour Highlights</b></h2>
-                            <p><b>01 | Lorem ipsum dolor</b></p>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos similique commodi dolor.
-                                Nemo ratione repellat adipisci ullam consequatur? Reprehenderit, labore eligendi? Autem
-                                ex exercitationem vel ab. Molestias dolore esse sequi.</p>
-                            <p><b>02 | Lorem ipsum dolor</b></p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis aspernatur maxime
-                                cum animi modi, quod illum incidunt natus corrupti veniam error vitae asperiores minus,
-                                voluptate mollitia velit molestias quia eos?</p>
+                            <p><b>01 <span class="orange">|</span> The Cupola</b></p>
+                            <p>Take in the breathtaking views of Earth from the famous Cupola, the International Space
+                                Station's oberservation module.<br>The Cupola, often referred to as the "window to the world," is an iconic module on the International Space Station (ISS) that provides an unparalleled perspective of our planet. Designed with multiple large windows, the Cupola offers a panoramic view of Earth that will leave you awe-inspired.</p>
+                            <p><b>02 <span class="orange">|</span> The Moonwalk</b></p>
+                            <p>Put on your custom Odyssey spacesuit and take a guided walk on the surface of the moon,
+                                experiencing what it's like to move and work in the low-gravity environment of space.
+                            </p>
+                            <p><b>03 <span class="orange">|</span> Scenic Flight</b></p>
+                            <p>Board the Nausica for a scenic flight on the way home and take in breathtaking
+                                views of the Moon and the stars. You'll get a chance to view Earth's nearby astral
+                                bodies, most of which cannot be seen from Earth.</p>
                         </div>
+                        <!--Comment out on emergency-->
+                        <br>
+                        <div class="container flex-child">
+                        <div class = "row">
+                            <div class = "card bg-secondary p-4 my-3">
+                                <h2 class = "card-title">5.0</h2>
+                                <p class = "card-subtitle">8,834 Reviews so far</p>
+                            </div>
+                        </div>
+                        <div class = "row">
+                            <div class = "card p-4 col-12">
+                                <h6 class = "card-heading">
+                                    Top Review
+                                </h6>
+                                <h3 class = "card-title">
+                                    Best Experience EVER
+                                </h3>
+                                <h5 class = "card-subtitle">
+                                    Michael B.
+                                </h5><br>
+                                <p class = "card-text">
+                                    <i>"The Deluxe Tour offered an unforgettable experience that surpassed all my wildest dreams. From the moment I stepped aboard the luxurious spacecraft, I knew I was in for a once-in-a-lifetime adventure. The attention to detail and personalized service provided by Stellar Travel Agency were exceptional. The tour guides were not only knowledgeable but also passionate about space exploration, adding a unique depth to the journey. The state-of-the-art facilities and comfortable accommodations made me feel right at home, even in the vastness of space. The highlight of the Deluxe Tour was the exclusive visit to a breathtaking nebula, where the vibrant colors and swirling cosmic dust left me in awe. This tour truly redefined luxury and exploration, and I can confidently say it was worth every penny. If you're looking for the ultimate space travel experience, the Deluxe Tour is a must-book."</i>
+                                </p>
+                                <div class = "card-footer text-light border-light">
+                                    5.0 &#9733;&#9733;&#9733;&#9733;&#9733;
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <!--COMMENT-->
                     </div>
 
                 </div>
@@ -812,37 +1019,190 @@
 <br>
 <br>
 
+<h4 class="subheadingCenter centeredText fadeIn">OUR LAUNCH SITES</h4>
+<div class="underlineSmall fadeIn"></div>
+
+<!--<div class="fadeIn center">
+    <iframe src="https://www.google.com/maps/d/u/3/embed?mid=1fWNRyisFzt6coTXMOKN9-ue-9bo4XdQ&ehbc=2E312F"></iframe>
+</div>-->
+
+<div class="container-map center fadeIn">
+
+    <div class="marker-cali-txt hide-txt">
+        <p>Vandenburg Space Force Launch Pad</p>
+        <p>Vandenburg, CA</p>
+    </div>
+    <div class="marker-texas-txt hide-txt">
+        <p>Houston Revived Launch Site</p>
+        <p>Houston, TX</p>
+    </div>
+    <div class="marker-florida-txt hide-txt">
+        <p>Cape Canaveral Launch Site</p>
+        <p>Cape Canaveral, FL</p>
+    </div>
+    <div class="marker-east-txt hide-txt">
+        <p>Wallops Flight Facility</p>
+        <p>Delmarva Peninsula, VA</p>
+    </div>
+
+    <script>
+        var minWidth = 1000;
+        if ($(window).width() >= minWidth) {
+            $(document).ready(function () {
+                $(".hide-txt").hide();
+                $(".marker-cali").click(function () {
+                    $(".hide-txt").hide();
+                    $(".marker-cali-txt").toggle();
+                });
+
+                $(".marker-texas").click(function () {
+                    $(".hide-txt").hide();
+
+                    $(".marker-texas-txt").toggle();
+                });
+
+                $(".marker-florida").click(function () {
+                    $(".hide-txt").hide();
+
+                    $(".marker-florida-txt").toggle();
+                });
+
+                $(".marker-east").click(function () {
+                    $(".hide-txt").hide();
+
+                    $(".marker-east-txt").toggle();
+                });
+            });
+        }
+
+
+    </script>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+        viewBox="0 0 1080 1080" xml:space="preserve">
+        <desc>Created with Fabric.js 5.2.4</desc>
+        <defs>
+        </defs>
+        <rect x="0" y="0" width="100%" height="100%" fill="transparent" />
+        <g transform="matrix(1 0 0 1 540 540)" id="ff5ca108-e2c7-4a06-984a-c8dca0513bbd">
+            <rect
+                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;"
+                vector-effect="non-scaling-stroke" x="-540" y="-540" rx="0" ry="0" width="1080" height="1080" />
+        </g>
+        <g transform="matrix(1 0 0 1 540 540)" id="593438e4-938b-4add-b075-c5a386aac2d0">
+        </g>
+        <g transform="matrix(3.97 0 0 3.97 540 539.99)">
+            <path
+                style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(251,133,36); fill-rule: nonzero; opacity: 1;"
+                vector-effect="non-scaling-stroke" transform=" translate(-130, -82.5)"
+                d="M 258 23.765 L 252.783 20.035 L 250.16199999999998 12.056000000000001 L 243.52899999999997 11.489 L 241.87599999999998 23.01 L 239.77499999999998 26.339000000000002 L 238.47699999999998 28.558000000000003 L 230.70999999999998 30.682000000000002 L 224.265 32.217 L 219.071 38.945 L 220.535 42.061 L 209.652 48.955 L 206.32299999999998 53.18 L 203.20699999999997 55.494 L 194.77899999999997 60.499 L 190.12799999999996 59.082 L 193.71699999999996 50.607 L 188.40499999999994 43.217999999999996 L 186.84699999999995 37.032999999999994 L 182.88099999999994 34.907999999999994 L 176.08199999999994 41.11699999999999 L 174.68899999999994 46.42899999999999 L 176.74299999999994 53.13299999999999 L 174.71299999999994 60.75799999999999 L 171.61999999999995 61.25399999999999 L 169.89699999999993 56.72099999999999 L 169.02299999999994 52.02399999999999 L 170.69899999999993 42.36799999999999 L 169.35399999999993 40.64499999999999 L 171.45499999999993 35.450999999999986 L 184.15599999999992 33.63299999999999 L 179.5759999999999 29.10099999999999 L 169.61299999999991 31.86299999999999 L 164.72699999999992 28.509999999999987 L 156.5579999999999 32.42899999999999 L 149.2639999999999 31.69699999999999 L 151.7659999999999 23.71799999999999 L 146.59599999999992 20.83799999999999 L 142.0159999999999 21.097999999999992 L 136.11399999999992 18.240999999999993 L 127.73399999999992 18.217999999999993 L 99.80599999999993 16.80099999999999 L 65.31499999999993 12.10299999999999 L 51.244999999999926 9.222999999999992 L 47.302999999999926 8.325999999999992 L 24.687 2.235 L 23.082 7.286999999999999 L 15.338000000000001 4.642999999999999 L 15.149000000000001 17.155 L 17.864 18.383000000000003 L 13.780000000000001 21.121000000000002 L 5.919 36.136 L 5.776999999999999 41.542 L 2 50.347 L 2.2359999999999998 60.215 L 9.885 90.999 L 18.738 95.957 L 22.845 101.434 L 23.648 106.699 L 36.089 108.327 L 35.309999999999995 109.508 L 53.67699999999999 120.29599999999999 L 63.922999999999995 121.90199999999999 L 68.64399999999999 119.75299999999999 L 77.56799999999998 120.93399999999998 L 84.74399999999999 128.48799999999997 L 86.70399999999998 134.93299999999996 L 93.80999999999997 139.79599999999996 L 96.68999999999997 135.31099999999995 L 103.58299999999997 135.54699999999994 L 113.28599999999997 149.73499999999993 L 115.38699999999997 157.07699999999994 L 125.34899999999998 159.10699999999994 L 124.07499999999997 153.53599999999994 L 127.09599999999998 147.16199999999995 L 134.93399999999997 142.69999999999996 L 144.58899999999997 134.97999999999996 L 152.89899999999997 137.50599999999997 L 155.14199999999997 135.57099999999997 L 160.57199999999997 139.63099999999997 L 166.61499999999998 137.64799999999997 L 167.48899999999998 132.61999999999998 L 173.39099999999996 130.94299999999998 L 178.58399999999997 129.90499999999997 L 185.926 130.23499999999999 L 192.277 133.82399999999998 L 196.951 130.141 L 205.47299999999998 136.65599999999998 L 205.379 143.385 L 210.667 151.31699999999998 L 220.747 157.12399999999997 L 221.31400000000002 146.07599999999996 L 217.25300000000001 137.29399999999995 L 209.77 124.47499999999995 L 211.63500000000002 115.92899999999995 L 219.16600000000003 107.40699999999994 L 221.43200000000002 102.59099999999994 L 233.07000000000002 87.95399999999994 L 230.615 83.98799999999994 L 230.686 83.96399999999994 L 230.922 83.91699999999994 L 231.347 83.82299999999995 L 231.465 83.79899999999995 L 227.475 80.21099999999996 L 227.78199999999998 76.12699999999995 L 226.42799999999997 74.77299999999995 L 230.54399999999998 75.11199999999995 L 231.748 74.52099999999996 L 232.504 71.59399999999995 L 232.646 71.57099999999996 L 232.69299999999998 71.54699999999995 L 229.057 63.89799999999995 L 230.61499999999998 62.22199999999995 L 235.219 62.906999999999954 L 234.274 55.186999999999955 L 235.455 54.832999999999956 L 243.00900000000001 50.88999999999996 L 245.08700000000002 47.79799999999996 L 245.323 47.93899999999996 L 245.913 48.81299999999996 L 248.014 46.28699999999996 L 244.99200000000002 40.36099999999996 L 244.94500000000002 39.06299999999996 L 248.93500000000003 33.08999999999996 L 258 23.765 z M 35.9 132.856 L 33.044 133.87099999999998 L 26.08 137.176 L 22.514999999999997 142.511 L 23.435999999999996 149.664 L 20.436999999999998 155.236 L 28.416999999999998 162.766 L 48.79 160.21699999999998 L 48.035 137.97799999999998 L 35.9 132.856 z"
+                stroke-linecap="round" />
+        </g>
+        <g class="svg-container">
+            <g transform="matrix(0.82 0 0 0.82 850.79 694.01)">
+                <path
+                    style="stroke: rgb(245,245,245); stroke-width: 4; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(245,245,245); fill-rule: nonzero; opacity: 1;"
+                    vector-effect="non-scaling-stroke" transform=" translate(-50, -50)"
+                    d="M 50 92.875 C 26.358 92.875 7.125 73.642 7.125 50 C 7.125 26.358000000000004 26.358 7.125 50 7.125 C 73.642 7.125 92.875 26.358 92.875 50 C 92.875 73.642 73.642 92.875 50 92.875 z M 50 9.125 C 27.461 9.125 9.125 27.461 9.125 50 C 9.125 72.538 27.461 90.875 50 90.875 C 72.538 90.875 90.875 72.538 90.875 50 C 90.875 27.461 72.538 9.125 50 9.125 z"
+                    stroke-linecap="round" />
+            </g>
+            <g transform="matrix(0.73 0 0 0.73 850.99 693.75)" id="97f36036-e1fd-49de-ad72-bff8220bd217">
+                <circle vector-effect="non-scaling-stroke" cx="0" cy="0" r="35" class="marker-florida" />
+            </g>
+        </g>
+        <g class="svg-container">
+            <g transform="matrix(0.82 0 0 0.82 587.33 754.3)">
+                <path
+                    style="stroke: rgb(245,245,245); stroke-width: 4; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(245,245,245); fill-rule: nonzero; opacity: 1;"
+                    vector-effect="non-scaling-stroke" transform=" translate(-50, -50)"
+                    d="M 50 92.875 C 26.358 92.875 7.125 73.642 7.125 50 C 7.125 26.358000000000004 26.358 7.125 50 7.125 C 73.642 7.125 92.875 26.358 92.875 50 C 92.875 73.642 73.642 92.875 50 92.875 z M 50 9.125 C 27.461 9.125 9.125 27.461 9.125 50 C 9.125 72.538 27.461 90.875 50 90.875 C 72.538 90.875 90.875 72.538 90.875 50 C 90.875 27.461 72.538 9.125 50 9.125 z"
+                    stroke-linecap="round" />
+            </g>
+            <g transform="matrix(0.72 0 0 0.72 587.52 754.61)" id="76a0e327-073d-4dbb-b894-ab7e02457b61">
+                <circle vector-effect="non-scaling-stroke" cx="0" cy="0" r="35" class="marker-texas" />
+            </g>
+        </g>
+        <g transform="matrix(0 0 0 0 0 0)">
+            <g style="">
+            </g>
+        </g>
+        <g class="svg-container">
+            <g transform="matrix(0.72 0 0 0.72 100.58 588.13)" id="76a0e327-073d-4dbb-b894-ab7e02457b61">
+                <circle vector-effect="non-scaling-stroke" cx="0" cy="0" r="35" class="marker-cali" />
+            </g>
+            <g transform="matrix(0.82 0 0 0.82 100.35 587.82)">
+                <path
+                    style="stroke: rgb(245,245,245); stroke-width: 4; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(245,245,245); fill-rule: nonzero; opacity: 1;"
+                    vector-effect="non-scaling-stroke" transform=" translate(-50, -50)"
+                    d="M 50 92.875 C 26.358 92.875 7.125 73.642 7.125 50 C 7.125 26.358000000000004 26.358 7.125 50 7.125 C 73.642 7.125 92.875 26.358 92.875 50 C 92.875 73.642 73.642 92.875 50 92.875 z M 50 9.125 C 27.461 9.125 9.125 27.461 9.125 50 C 9.125 72.538 27.461 90.875 50 90.875 C 72.538 90.875 90.875 72.538 90.875 50 C 90.875 27.461 72.538 9.125 50 9.125 z"
+                    stroke-linecap="round" />
+            </g>
+        </g>
+        <g class="svg-container">
+            <g transform="matrix(0.72 0 0 0.72 930.52 513.89)" id="76a0e327-073d-4dbb-b894-ab7e02457b61">
+                <circle vector-effect="non-scaling-stroke" cx="0" cy="0" r="35" class="marker-east" />
+            </g>
+            <g transform="matrix(0.82 0 0 0.82 929.74 514)">
+                <path
+                    style="stroke: rgb(245,245,245); stroke-width: 4; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(245,245,245); fill-rule: nonzero; opacity: 1;"
+                    vector-effect="non-scaling-stroke" transform=" translate(-50, -50)"
+                    d="M 50 92.875 C 26.358 92.875 7.125 73.642 7.125 50 C 7.125 26.358000000000004 26.358 7.125 50 7.125 C 73.642 7.125 92.875 26.358 92.875 50 C 92.875 73.642 73.642 92.875 50 92.875 z M 50 9.125 C 27.461 9.125 9.125 27.461 9.125 50 C 9.125 72.538 27.461 90.875 50 90.875 C 72.538 90.875 90.875 72.538 90.875 50 C 90.875 27.461 72.538 9.125 50 9.125 z"
+                    stroke-linecap="round" />
+            </g>
+        </g>
+    </svg>
+</div>
+
+<div class="map-locations centeredText">
+    <p class="fadeIn">1 <span class="orange">|</span> Vandenburg Space Force Launch Pad</p>
+    <p class="fadeIn">Vandenburg, CA</p>
+    <hr class="fadeIn">
+    <p class="fadeIn">2 <span class="orange">|</span> Houston Revived Launch Site</p>
+    <p class="fadeIn">Houston, TX</p>
+    <hr class="fadeIn">
+    <p class="fadeIn">3 <span class="orange">|</span> Cape Canaveral Launch Site</p>
+    <p class="fadeIn">Cape Canaveral, FL</p>
+    <hr class="fadeIn">
+    <p class="fadeIn">4 <span class="orange">|</span> Wallops Flight Facility</p>
+    <p class="fadeIn">Delmarva Peninsula, VA</p>
+</div>
+
+<br>
+<br>
+
 <h4 class="subheadingCenter centeredText fadeIn">FREQUENTLY ASKED QUESTIONS</h4>
 <div class="underlineSmall fadeIn"></div>
 
 <br>
 <br>
 
+
 <div class="container fadeIn">
     <div class="row">
         <div class="col-lg-9 mx-auto">
-            <!-- Accordion -->
             <div id="accordionExample" class="accordion">
-
-                <!-- Accordion item 1 -->
                 <div class="card">
                     <div id="headingOne" class="card-header bg-dark shadow-sm border-0">
                         <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseOne"
                                 aria-expanded="true" aria-controls="collapseOne"
-                                class="d-block position-relative text-light text-uppercase collapsible-link py-2">Are
-                                there any payment plans available for me to choose from?</a></h6>
+                                class="d-block position-relative text-light text-uppercase collapsible-link py-2">How
+                                will payments work?</a></h6>
                     </div>
                     <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample"
                         class="collapse show">
                         <div class="card-body p-5">
-                            <p class="font-weight-light m-0">Of course! You can select your payment plan on the checkout
-                                page as you book your tour.
+                            <p class="font-weight-light m-0">$10,000 will incur as a surcharge, and after the tickets are redeemed.</p>
+                            <br>
+                            <p><b>Why is there a surcharge of $10,000 for the orbital tour?</b>
+                            <br>The surcharge of $10,000 is applied to cover the additional costs associated with providing an orbital tour experience. Unlike regular space tourism flights, which operate at suborbital altitudes, an orbital tour takes you into Earth's orbit, allowing you to experience weightlessness and witness the curvature of our planet from space. The technology, resources, and infrastructure required for such a mission are significantly more complex and expensive, hence the surcharge is necessary to cover these extraordinary expenses.</p>
+                            <br>
+                            <p><b>When do I need to pay the surcharge?</b>
+                            <br>
+                            The surcharge of $10,000 is due after you have successfully redeemed your tickets and confirmed your reservation for the orbital tour. At the time of booking, you will be required to pay the base cost of the tour, and the surcharge amount will be invoiced separately to ensure clarity and transparency in the payment process.
                             </p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Accordion item 2 -->
                 <div class="card">
                     <div id="headingTwo" class="card-header bg-dark shadow-sm border-0">
                         <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -853,13 +1213,11 @@
                     <div id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample" class="collapse">
                         <div class="card-body p-5">
                             <p class="font-weight-light m-0">Odyssey offers an all-inclusive deluxe tour package that
-                                covers all three of our tours.
+                                covers all three of our tours. No, it is not possible to go on more than one tour at the same time. Each orbital tour requires specific planning, resources, and coordination to ensure a safe and enjoyable experience. The logistics involved in conducting an orbital tour are intricate and demand careful attention to detail. Therefore, it is not feasible to participate in multiple tours simultaneously. However, if you are interested in additional tours, our team will be happy to assist you in planning future experiences after completing your initial tour.
                             </p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Accordion item 3 -->
                 <div class="card">
                     <div id="headingThree" class="card-header bg-dark shadow-sm border-0">
                         <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse"
@@ -872,11 +1230,34 @@
                         <div class="card-body p-5">
                             <p class="font-weight-light m-0">Due to the rigor of spaceflight, we are limiting our tours
                                 to adults 18 years and older.
+                                <br>
+                                While we understand the excitement and curiosity that children may have about space travel, the safety and well-being of our passengers are our top priorities. Spaceflight, particularly orbital tours, involves certain physical and physiological challenges that require a high level of physical fitness, maturity, and understanding.</p>
+                                <br>
+                                <p>The rigorous conditions of space travel, including the forces experienced during launch and reentry, the potential for weightlessness and readjustment to Earth's gravity, and the complex protocols and procedures that need to be followed, make it necessary to restrict participation to adults. These measures help ensure the safety and comfort of all passengers aboard our spacecraft.</p>
+                                <br>
+                                <p>However, we encourage younger space enthusiasts to continue nurturing their interest in space exploration and look forward to a time when space travel experiences can be safely extended to a wider age range. In the meantime, we strive to inspire and engage younger audiences through educational programs and outreach initiatives, sparking their curiosity and fostering a passion for space science and exploration.</p>
+                                <br>
+                                <p>Please note that our age limit policy is subject to change in the future as technology advances and safety standards evolve. We recommend staying updated on our website or contacting our customer service for any updates or changes to our age restrictions.</p>
                             </p>
                         </div>
                     </div>
                 </div>
-
+                <div class="card">
+                    <div id="headingFour" class="card-header bg-dark shadow-sm border-0">
+                        <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseFour"
+                                aria-expanded="false" aria-controls="collapseFour"
+                                class="d-block position-relative collapsed text-light text-uppercase collapsible-link py-2">How
+                                do I redeem my tickets?</a></h6>
+                    </div>
+                    <div id="collapseFour" aria-labelledby="headingFour" data-parent="#accordionExample"
+                        class="collapse">
+                        <div class="card-body p-5">
+                            <p class="font-weight-light m-0">Present your ticket information as well as your security question response in your profile center as
+                                you board the flight and an Odysseynaut will change the status for you!
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
